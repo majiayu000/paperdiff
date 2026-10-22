@@ -22,6 +22,7 @@ class Key:
     code_transforms: dict[str, Callable[[float], float]] = field(default_factory=dict)
     core: bool = False  # report when code sets it but the paper never mentions it
     context: str | None = None  # regex that must also occur in the same sentence
+    symbols: tuple[str, ...] = ()  # math symbols papers use for it, e.g. r (with any subscript) for LoRA rank
 
 
 def _one_minus(v: float) -> float:
@@ -81,7 +82,7 @@ KEYS: list[Key] = [
     Key("num_gpus", "int", r"GPUs\b", number_before=True,
         code_names=("num_gpus", "n_gpus", "gpus", "ngpu", "nproc_per_node")),
     Key("lora_rank", "int", r"\brank\s*r\b|\br\s*=(?=\s*\d)",
-        code_names=("lora_r", "lora_rank", "lora_dim")),
+        code_names=("lora_r", "lora_rank", "lora_dim"), symbols=("r",)),
     Key("lora_alpha", "float", r"LoRA[^.]{0,20}?\\alpha|\\alpha_\{?r\}?",
         code_names=("lora_alpha",)),
     # Fraction of the labelled data used for training ("75:25 split" -> 0.75).
@@ -103,6 +104,15 @@ _CODE_NAME_INDEX: dict[str, Key] = {}
 for _k in KEYS:
     for _n in _k.code_names:
         _CODE_NAME_INDEX[_n] = _k
+
+
+def key_for_symbol(symbol: str) -> Key | None:
+    """Map a symbol from an assignment such as `r_q = 8` or `lr = 1e-4` to a canonical key."""
+    base = re.sub(r"[\\{}$]", "", symbol).strip()
+    for k in KEYS:
+        if base.split("_", 1)[0] in k.symbols:
+            return k
+    return key_for_code_name(base)
 
 
 def key_for_code_name(name: str) -> Key | None:

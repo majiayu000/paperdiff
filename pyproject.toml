@@ -1,17 +1,39 @@
 [project]
 name = "paperdiff"
 version = "0.1.0"
-description = "Report differences between the experimental setup a paper states and what its code actually configures."
+description = "Paper vs code consistency checker for ML reproducibility: compare hyperparameters, data splits and seeds in an arXiv paper with its GitHub code, line by line."
 readme = "README.md"
 license = "MIT"
 authors = [
     { name = "majiayu000", email = "1835304752@qq.com" }
 ]
 requires-python = ">=3.12"
+keywords = ["reproducibility", "machine-learning", "arxiv", "hyperparameters", "research", "paper", "code-review",
+            "peer-review", "latex", "replication", "ml-research", "consistency-check"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Text Processing :: Markup :: LaTeX",
+]
 dependencies = [
     "pypdf>=5.0",
     "pyyaml>=6.0",
 ]
+
+[project.urls]
+Homepage = "https://majiayu000.github.io/paperdiff/"
+Repository = "https://github.com/majiayu000/paperdiff"
+Issues = "https://github.com/majiayu000/paperdiff/issues"
+Documentation = "https://github.com/majiayu000/paperdiff/blob/main/docs/design.md"
 
 [project.scripts]
 paperdiff = "paperdiff.cli:main"

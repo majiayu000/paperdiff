@@ -4,19 +4,19 @@
 - Title: LoRA: Low-Rank Adaptation of Large Language Models
 - Code: https://github.com/microsoft/LoRA @ `c4593f060e6a`
 - Excluded paths: `examples/NLU/src/*`, `examples/NLU/examples/*`
-- Generated: 2026-10-22T05:21:41Z by paperdiff 0.1.0
+- Generated: 2026-10-22T08:14:57Z by paperdiff 0.1.0
 
 | Category | Count |
 |---|---|
-| conflict | 28 |
-| ambiguous | 180 |
+| conflict | 36 |
+| ambiguous | 209 |
 | missing_in_code | 22 |
 | missing_in_paper | 1 |
-| match | 116 |
+| match | 144 |
 
 > paperdiff reports differences between what a paper states and what its code configures. A difference can come from a typo, a later code change, a setting defined elsewhere, a reasonable implementation choice, or an extraction error by this tool. It is not a judgement about whether the paper is correct, and it is not an accusation of misconduct. Check each item by hand before citing it.
 
-## Conflicts — the code sets a different value (28)
+## Conflicts — the code sets a different value (36)
 
 ### C1. `learning_rate`
 
@@ -126,7 +126,79 @@
   - 0.01 — command `--weight_decay` at [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52): `python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_ft.py \`
 - Scope: compared only with files matching "GPT-2"
 
-### C13. `lora_alpha`
+### C13. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / MNLI)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_mnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > MNLI"
+
+### C14. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / SST-2)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_sst2.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > SST-2"
+
+### C15. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / MRPC)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_mrpc.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > MRPC"
+
+### C16. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / CoLA)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_cola.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > CoLA"
+
+### C17. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / QNLI)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_qnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > QNLI"
+
+### C18. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / QQP)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_qqp.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > QQP"
+
+### C19. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / RTE)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_rte.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > RTE"
+
+### C20. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:743` (column: DeBERTa XXL LoRA / STS-B)
+  - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
+  - Context: "LoRA Config. \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/deberta_v2_xxlarge_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_stsb.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > STS-B"
+
+### C21. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / MNLI)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -135,7 +207,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_mnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > MNLI"
 
-### C14. `lora_alpha`
+### C22. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / SST-2)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -144,7 +216,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_sst2.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > SST-2"
 
-### C15. `lora_alpha`
+### C23. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / MRPC)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -153,7 +225,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_mrpc.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > MRPC"
 
-### C16. `lora_alpha`
+### C24. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / CoLA)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -162,7 +234,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_cola.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > CoLA"
 
-### C17. `lora_alpha`
+### C25. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / QNLI)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -171,7 +243,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_qnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > QNLI"
 
-### C18. `lora_alpha`
+### C26. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / QQP)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -180,7 +252,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_qqp.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > QQP"
 
-### C19. `lora_alpha`
+### C27. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / RTE)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -189,7 +261,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_rte.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > RTE"
 
-### C20. `lora_alpha`
+### C28. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:662` (column: RoBERTa base LoRA / STS-B)
   - Section: Appendix: Hyperparameters Used in Experiments > RoBERTa
@@ -198,7 +270,7 @@
   - 16 — command `--lora_alpha` at [examples/NLU/roberta_base_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_stsb.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "RoBERTa > RoBERTa base LoRA > STS-B"
 
-### C21. `lora_alpha`
+### C29. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / MNLI)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -207,7 +279,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_mnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > MNLI"
 
-### C22. `lora_alpha`
+### C30. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / SST-2)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -216,7 +288,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_sst2.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > SST-2"
 
-### C23. `lora_alpha`
+### C31. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / MRPC)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -225,7 +297,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_mrpc.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > MRPC"
 
-### C24. `lora_alpha`
+### C32. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / CoLA)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -234,7 +306,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_cola.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > CoLA"
 
-### C25. `lora_alpha`
+### C33. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / QNLI)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -243,7 +315,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_qnli.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > QNLI"
 
-### C26. `lora_alpha`
+### C34. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / QQP)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -252,7 +324,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_qqp.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > QQP"
 
-### C27. `lora_alpha`
+### C35. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / RTE)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -261,7 +333,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_rte.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > RTE"
 
-### C28. `lora_alpha`
+### C36. `lora_alpha`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:744` (column: DeBERTa XXL LoRA / STS-B)
   - Section: Appendix: Hyperparameters Used in Experiments > DeBERTa
@@ -270,7 +342,7 @@
   - 32 — command `--lora_alpha` at [examples/NLU/deberta_v2_xxlarge_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/deberta_v2_xxlarge_stsb.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
 - Scope: compared only with files matching "DeBERTa > DeBERTa XXL LoRA > STS-B"
 
-## Ambiguous — several values, or the paper value is overridden (180)
+## Ambiguous — several values, or the paper value is overridden (209)
 
 ### A1. `learning_rate`
 
@@ -2437,6 +2509,54 @@
 
 ### A153. `lora_rank`
 
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:1031` (column: MNLI-100)
+  - Section: Appendix: Additional Empirical Experiments > Low-Data Regime
+  - Context: "LoRA \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A154. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:1031` (column: MNLI-1k)
+  - Section: Appendix: Additional Empirical Experiments > Low-Data Regime
+  - Context: "LoRA \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A155. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:1031` (column: MNLI-10K)
+  - Section: Appendix: Additional Empirical Experiments > Low-Data Regime
+  - Context: "LoRA \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A156. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:1031` (column: MNLI-392K)
+  - Section: Appendix: Additional Empirical Experiments > Low-Data Regime
+  - Context: "LoRA \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8 \| r_q=r_v=8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A157. `lora_rank`
+
 - **Paper**: `2` → 2 at `iclr2022_conference.tex:1103`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Effect of r on GPT-2
   - Context: "\caption{Validation loss and test set metrics on E2E NLG Challenge achieved by LoRA with different rank r using GPT-2 Medium."
@@ -2447,7 +2567,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A154. `lora_rank`
+### A158. `lora_rank`
 
 - **Paper**: `1` → 1 at `iclr2022_conference.tex:1103`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Effect of r on GPT-2
@@ -2459,7 +2579,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: one of the several values the paper lists matches the code
 
-### A155. `lora_rank`
+### A159. `lora_rank`
 
 - **Paper**: `16` → 16 at `iclr2022_conference.tex:1103`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Effect of r on GPT-2
@@ -2471,7 +2591,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: the paper lists several values here (1, 16, 4)
 
-### A156. `lora_rank`
+### A160. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:1103`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Effect of r on GPT-2
@@ -2483,7 +2603,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: one of the several values the paper lists matches the code
 
-### A157. `lora_rank`
+### A161. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:1129`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Amplification Factor
@@ -2495,7 +2615,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A158. `lora_rank`
+### A162. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:1131`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Amplification Factor
@@ -2507,7 +2627,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A159. `lora_rank`
+### A163. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:1133`
   - Section: Appendix: Additional Experiments on Low-Rank Matrices > Amplification Factor
@@ -2519,7 +2639,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A160. `lora_rank`
+### A164. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:297`
   - Section: Appendix: Our Method > Applying LoRA to Transformer
@@ -2531,7 +2651,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A161. `lora_rank`
+### A165. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:376`
   - Section: Appendix: Understanding the Low-Rank Updates > Which Weight Matrices in Transformer Should We Apply LoRA to?
@@ -2543,7 +2663,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A162. `lora_rank`
+### A166. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:376`
   - Section: Appendix: Understanding the Low-Rank Updates > Which Weight Matrices in Transformer Should We Apply LoRA to?
@@ -2555,7 +2675,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A163. `lora_rank`
+### A167. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:387` (column: \# of Trainable Parameters = 18M)
   - Section: Appendix: Understanding the Low-Rank Updates > Which Weight Matrices in Transformer Should We Apply LoRA to?
@@ -2567,7 +2687,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A164. `lora_rank`
+### A168. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:387` (column: \# of Trainable Parameters = 18M)
   - Section: Appendix: Understanding the Low-Rank Updates > Which Weight Matrices in Transformer Should We Apply LoRA to?
@@ -2579,7 +2699,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A165. `lora_rank`
+### A169. `lora_rank`
 
 - **Paper**: `2` → 2 at `iclr2022_conference.tex:387` (column: \# of Trainable Parameters = 18M)
   - Section: Appendix: Understanding the Low-Rank Updates > Which Weight Matrices in Transformer Should We Apply LoRA to?
@@ -2591,7 +2711,67 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A166. `lora_rank`
+### A170. `lora_rank`
+
+- **Paper**: `r=1` → 1 at `iclr2022_conference.tex:413`
+  - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
+  - Context: "tabular r\|c\|ccccc \| Weight Type \| r=1 \| r=2 \| r=4 \| r=8 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A171. `lora_rank`
+
+- **Paper**: `r=2` → 2 at `iclr2022_conference.tex:413`
+  - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
+  - Context: "tabular r\|c\|ccccc \| Weight Type \| r=1 \| r=2 \| r=4 \| r=8 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A172. `lora_rank`
+
+- **Paper**: `r=4` → 4 at `iclr2022_conference.tex:413`
+  - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
+  - Context: "tabular r\|c\|ccccc \| Weight Type \| r=1 \| r=2 \| r=4 \| r=8 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A173. `lora_rank`
+
+- **Paper**: `r=8` → 8 at `iclr2022_conference.tex:413`
+  - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
+  - Context: "tabular r\|c\|ccccc \| Weight Type \| r=1 \| r=2 \| r=4 \| r=8 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A174. `lora_rank`
+
+- **Paper**: `r=64` → 64 at `iclr2022_conference.tex:413`
+  - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
+  - Context: "tabular r\|c\|ccccc \| Weight Type \| r=1 \| r=2 \| r=4 \| r=8 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A175. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:436`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2603,7 +2783,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A167. `lora_rank`
+### A176. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:436`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2615,7 +2795,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A168. `lora_rank`
+### A177. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:438`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2627,7 +2807,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A169. `lora_rank`
+### A178. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:438`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2639,7 +2819,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A170. `lora_rank`
+### A179. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:441`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2651,7 +2831,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A171. `lora_rank`
+### A180. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:441`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2663,7 +2843,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A172. `lora_rank`
+### A181. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:445`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2675,7 +2855,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A173. `lora_rank`
+### A182. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:461`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2687,7 +2867,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A174. `lora_rank`
+### A183. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:461`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2699,7 +2879,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A175. `lora_rank`
+### A184. `lora_rank`
 
 - **Paper**: `1` → 1 at `iclr2022_conference.tex:461`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2711,7 +2891,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A176. `lora_rank`
+### A185. `lora_rank`
 
 - **Paper**: `8` → 8 at `iclr2022_conference.tex:464`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2723,7 +2903,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A177. `lora_rank`
+### A186. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:464`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2735,7 +2915,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A178. `lora_rank`
+### A187. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:476`
   - Section: Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?
@@ -2747,7 +2927,31 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A179. `lora_rank`
+### A188. `lora_rank`
+
+- **Paper**: `r=4` → 4 at `iclr2022_conference.tex:498`
+  - Section: Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?
+  - Context: "tabular c\|ccc\|ccc \| r=4 \| r=4 \| r=4 \| r=64 \| r=64 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A189. `lora_rank`
+
+- **Paper**: `r=64` → 64 at `iclr2022_conference.tex:498`
+  - Section: Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?
+  - Context: "tabular c\|ccc\|ccc \| r=4 \| r=4 \| r=4 \| r=64 \| r=64 \| r=64"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A190. `lora_rank`
 
 - **Paper**: `4` → 4 at `iclr2022_conference.tex:516`
   - Section: Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?
@@ -2759,11 +2963,227 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
 
-### A180. `lora_rank`
+### A191. `lora_rank`
 
 - **Paper**: `64` → 64 at `iclr2022_conference.tex:517`
   - Section: Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?
   - Context: "See \autoref{app:amplification_factor} for why r=64 has a smaller amplification factor."
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A192. `lora_rank`
+
+- **Paper**: `r=1` → 1 at `iclr2022_conference.tex:951` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "5 * Adapter^ H \| r=1 \| 7.1 M \| 71.9 \| 89.8"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A193. `lora_rank`
+
+- **Paper**: `r=4` → 4 at `iclr2022_conference.tex:952` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r=4 \| 21.2 M \| 73.2 \| 91.0"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A194. `lora_rank`
+
+- **Paper**: `r=8` → 8 at `iclr2022_conference.tex:953` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r=8 \| 40.1 M \| 73.2 \| 91.5"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A195. `lora_rank`
+
+- **Paper**: `r=64` → 64 at `iclr2022_conference.tex:955` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r=64 \| 304.4 M \| 72.6 \| 91.5"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A196. `lora_rank`
+
+- **Paper**: `r_{v}=2` → 2 at `iclr2022_conference.tex:957` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "LoRA \| r_ v =2 \| 4.7 M \| 73.4 \| 91.7"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A197. `lora_rank`
+
+- **Paper**: `r_q=r_v=1` → 1 at `iclr2022_conference.tex:958` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=1 \| 4.7 M \| 73.4 \| 91.3"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A198. `lora_rank`
+
+- **Paper**: `r_q=r_v=2` → 2 at `iclr2022_conference.tex:959` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=2 \| 9.4 M \| 73.3 \| 91.4"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A199. `lora_rank`
+
+- **Paper**: `r_q=r_k=r_v=r_o=1` → 1 at `iclr2022_conference.tex:960` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_k=r_v=r_o=1 \| 9.4 M \| 74.1 \| 91.2"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A200. `lora_rank`
+
+- **Paper**: `r_q=r_v=4` → 4 at `iclr2022_conference.tex:961` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=4 \| 18.8 M \| 73.7 \| 91.3"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A201. `lora_rank`
+
+- **Paper**: `r_q=r_k=r_v=r_o=2` → 2 at `iclr2022_conference.tex:962` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_k=r_v=r_o=2 \| 18.8 M \| 73.7 \| 91.7"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A202. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:963` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=8 \| 37.7 M \| 73.8 \| 91.6"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A203. `lora_rank`
+
+- **Paper**: `r_q=r_k=r_v=r_o=4` → 4 at `iclr2022_conference.tex:964` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_k=r_v=r_o=4 \| 37.7 M \| 74.0 \| 91.7"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A204. `lora_rank`
+
+- **Paper**: `r_q=r_v=64` → 64 at `iclr2022_conference.tex:965` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=64 \| 301.9 M \| 73.6 \| 91.4"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A205. `lora_rank`
+
+- **Paper**: `r_q=r_k=r_v=r_o=64` → 64 at `iclr2022_conference.tex:966` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_k=r_v=r_o=64 \| 603.8 M \| 73.9 \| 91.4"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A206. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:968` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "LoRA+PE \| r_q=r_v=8, l_p=8, l_i=4 \| 37.8 M \| 75.0 \| 91.4"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A207. `lora_rank`
+
+- **Paper**: `r_q=r_v=32` → 32 at `iclr2022_conference.tex:969` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=32, l_p=8, l_i=4 \| 151.1 M \| 75.9 \| 91.1"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A208. `lora_rank`
+
+- **Paper**: `r_q=r_v=64` → 64 at `iclr2022_conference.tex:970` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "r_q=r_v=64, l_p=8, l_i=4 \| 302.1 M \| 76.2 \| 91.3"
+- **Code** (highest precedence first; likely effective: 16):
+  - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+  - 16 — command `--lora_r` at [examples/NLU/mnli.rdrop.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.rdrop.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: no section or table title points at a specific file, so the code compared here may belong to a different experiment
+
+### A209. `lora_rank`
+
+- **Paper**: `r_q=r_v=8` → 8 at `iclr2022_conference.tex:972` (column: Hyperparameters)
+  - Section: Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3
+  - Context: "LoRA+PL \| r_q=r_v=8, l_p=8, l_i=4 \| 52.8 M \| 72.9 \| 90.2"
 - **Code** (highest precedence first; likely effective: 16):
   - 16 — command `--lora_r` at [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69): `python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \`
   - 16 — command `--lora_r` at [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5): `python -m torch.distributed.launch --nproc_per_node=$num_gpus \`
@@ -2950,7 +3370,7 @@
   - … 25 more in report.json
 - Note: the code sets this but the paper never mentions it
 
-## Matches (116)
+## Matches (144)
 
 | Setting | Paper | Paper location | Code | Code location |
 |---|---|---|---|---|
@@ -3051,6 +3471,34 @@
 | weight_decay | 0.01 | `iclr2022_conference.tex:770` | 0.01 (command) | [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52) |
 | weight_decay | 0.01 | `iclr2022_conference.tex:770` | 0.01 (command) | [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52) |
 | max_seq_length | 256 | `iclr2022_conference.tex:202` | 256 (command) | [examples/NLU/mnli.cutoff.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/mnli.cutoff.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_mnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_sst2.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_mrpc.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_cola.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_qnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_qqp.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_rte.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:661` | 8 (command) | [examples/NLU/roberta_base_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_base_stsb.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_sst2.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mrpc.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_cola.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_qnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_qqp.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_rte.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:669` | 8 (command) | [examples/NLU/roberta_large_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_stsb.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_sst2.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mrpc.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_cola.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_cola.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_qnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_qnli.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_qqp.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_qqp.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_rte.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_rte.sh#L5) |
+| lora_rank | r_q=r_v=8 | `iclr2022_conference.tex:677` | 8 (command) | [examples/NLU/roberta_large_stsb.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_stsb.sh#L5) |
+| lora_rank | r_q=r_v=4 | `iclr2022_conference.tex:778` | 4 (command) | [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52) |
+| lora_rank | r_q=r_v=4 | `iclr2022_conference.tex:778` | 4 (command) | [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52) |
+| lora_rank | r_q=r_v=4 | `iclr2022_conference.tex:778` | 4 (command) | [examples/NLG/README.md:52](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLG/README.md#L52) |
+| lora_rank | r=16 | `iclr2022_conference.tex:954` | 16 (command) | [examples/NLU/README.md:69](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/README.md#L69) |
 | lora_alpha | 16 | `iclr2022_conference.tex:670` | 16 (command) | [examples/NLU/roberta_large_mnli.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mnli.sh#L5) |
 | lora_alpha | 16 | `iclr2022_conference.tex:670` | 16 (command) | [examples/NLU/roberta_large_sst2.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_sst2.sh#L5) |
 | lora_alpha | 16 | `iclr2022_conference.tex:670` | 16 (command) | [examples/NLU/roberta_large_mrpc.sh:5](https://github.com/microsoft/LoRA/blob/c4593f060e6a368d7bb5af5273b8e42810cdef90/examples/NLU/roberta_large_mrpc.sh#L5) |

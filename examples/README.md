@@ -8,7 +8,7 @@ reports with `bash examples/run.sh` (each paper is fetched once from export.arxi
 | [Grokfast](grokfast/report.md) (arXiv:2405.20233) | ironjr/grokfast `93b2248e351d` | 35 | 0 | 1 | 10 | 1 | 24 |
 | [DPO](dpo/report.md) (arXiv:2305.18290) | eric-mitchell/direct-preference-optimization `f8b8c0f49dc9` | 6 | 2 | 1 | 0 | 1 | 3 |
 | [BERT](bert/report.md) (arXiv:1810.04805) | google-research/bert `eedf5716ce12` | 31 | 7 | 13 | 5 | 1 | 6 |
-| [LoRA](lora/report.md) (arXiv:2106.09685) | microsoft/LoRA `c4593f060e6a` | 346 | 28 | 180 | 22 | 1 | 116 |
+| [LoRA](lora/report.md) (arXiv:2106.09685) | microsoft/LoRA `c4593f060e6a` | 411 | 36 | 209 | 22 | 1 | 144 |
 
 LoRA was checked with `--exclude 'examples/NLU/src/*' --exclude 'examples/NLU/examples/*'` because that
 directory vendors a full copy of Hugging Face transformers.
@@ -23,8 +23,7 @@ Confirmed means "the two really say different things", not "the paper is wrong".
   [microsoft/LoRA#37](https://github.com/microsoft/LoRA/issues/37) (opened 2022-11-22, still open, no maintainer
   answer). paperdiff found it without knowing about the issue.
 - **LoRA, DeBERTa XXL LoRA α**: table says 8 (`:744`); `deberta_v2_xxlarge_*.sh` pass `--lora_alpha 32`. The
-  same scripts pass `--lora_r 16` while the table says $r_q=r_v=8$; paperdiff misses that one because the cell
-  packs two settings into one expression.
+  same scripts pass `--lora_r 16` while the table says $r_q=r_v=8$ (`:743`), two settings packed into one cell.
 - **LoRA, RoBERTa-large CoLA / STS-B learning rate**: table says 2E-04 (`:668`); `roberta_large_cola.sh` and
   `roberta_large_stsb.sh` pass `--learning_rate 3e-4`. Also batch size for SST-2 (4 vs 8) and STS-B (8 vs 4), and
   STS-B epochs (30 in the main block vs 10 in the script; the restricted-setup block of the same table says 10).

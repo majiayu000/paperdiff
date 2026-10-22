@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 
 from . import __version__
-from .align import align
+from .align import CATEGORIES, align
 from .code import extract_repo
 from .fetch import FetchError, resolve_paper, resolve_repo
 from .paper import load_paper
@@ -31,6 +31,10 @@ def cmd_check(args: argparse.Namespace) -> int:
     summary = ", ".join(f"{k}={v}" for k, v in sorted(counts.items()))
     print(f"{paper.label}: {len(paper.claims)} claims, {len(settings)} code settings -> {summary}")
     print(f"wrote {out / 'report.md'} and {out / 'report.json'}")
+    failing = [c for c in args.fail_on if counts.get(c)]
+    if failing:
+        print(f"failing because of: {', '.join(f'{c}={counts[c]}' for c in failing)}", file=sys.stderr)
+        return 1
     return 0
 
 
@@ -57,6 +61,8 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("-o", "--out", default="paperdiff-out", help="output directory (default: paperdiff-out)")
     c.add_argument("--exclude", action="append", default=[], metavar="GLOB",
                    help="skip repository paths matching this glob (repeatable), e.g. 'vendor/*'")
+    c.add_argument("--fail-on", action="append", default=[], choices=list(CATEGORIES)[:-1], metavar="CATEGORY",
+                   help="exit 1 if any finding has this category (repeatable), e.g. for a pre-submission CI check")
     c.set_defaults(func=cmd_check)
 
     r = sub.add_parser("rerun", help="run one command under a time/GPU budget and compare its numbers")

@@ -71,3 +71,17 @@ def test_comparisons_and_equation_numbers_are_not_settings():
     ranks = [c for c in claims if c.key == "lora_rank"]
     assert [c.value for c in ranks] == [8.0, 64.0] and all(c.values == [8.0, 64.0] for c in ranks)
     assert not any(c.key == "learning_rate" for c in claims)
+
+
+def test_two_settings_in_one_cell():
+    from paperdiff.paper import Line
+
+    rows = [r"\begin{tabular}{ll|cc}", r"Method & Setting & MNLI & SST-2 \\",
+            r"\multirow{2}{*}{LoRA} & Batch Size & 16 & 16 \\",
+            r" & LoRA Config. & \multicolumn{2}{c}{$r_q=r_v=8$} \\",
+            r" & Other & lr=1e-4, bs=32 & 0 \\", r"\end{tabular}"]
+    claims = extract([Line("t.tex", i + 1, t) for i, t in enumerate(rows)])
+    got = {(c.key, c.value, c.column, c.loc) for c in claims if c.key in ("lora_rank", "learning_rate")}
+    assert ("lora_rank", 8.0, "LoRA / MNLI", "t.tex:4") in got and ("lora_rank", 8.0, "LoRA / SST-2", "t.tex:4") in got
+    assert ("learning_rate", 0.0001, "LoRA / MNLI", "t.tex:5") in got
+    assert ("batch_size", 32.0) in {(c.key, c.value) for c in claims if c.loc == "t.tex:5"}

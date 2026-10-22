@@ -6,7 +6,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .keys import KEYS, KEYS_BY_NAME, PHRASES, Key
+from .keys import KEYS, KEYS_BY_NAME, PHRASES, Key, key_for_symbol
 from .values import Num, clean_latex, find_numbers
 
 COMMENT_RE = re.compile(r"(?<!\\)%.*$")
@@ -347,6 +347,30 @@ def _param_key(cell_raw: str) -> Key | None:
     return key
 
 
+ASSIGN_CHAIN_RE = re.compile(r"((?:\\?[A-Za-z]+(?:_\{?[A-Za-z0-9]+\}?)?\s*=\s*)+)(?=[-+.\d])")
+
+
+def _assignment_claims(cells, texts, header, group, rows_joined: _Joined, section: str) -> list[Claim]:
+    """Settings written as assignments inside a cell, e.g. `$r_q=r_v=8$` or `lr=1e-4, bs=32`."""
+    claims: list[Claim] = []
+    for j, (cpos, raw, _) in enumerate(cells):
+        cell = clean_latex(raw)
+        for m in ASSIGN_CHAIN_RE.finditer(cell):
+            nums = find_numbers(cell[m.end():])
+            if not nums or nums[0].start != 0:
+                continue
+            keys = {k.name: k for sym in re.split(r"\s*=\s*", m.group(1)) if sym.strip()
+                    and (k := key_for_symbol(sym)) is not None}
+            col = header[j] if header and j < len(header) and header[j] else None
+            col = " / ".join(x for x in (group, col) if x) or None
+            ln = rows_joined.line_at(cpos)
+            for key in sorted((k for k in keys.values() if k.kind != "str"), key=lambda k: k.name):
+                claims.append(Claim(key.name, nums[0].value, m.group(0) + nums[0].raw, ln.loc, ln.file, ln.line,
+                                    section, " | ".join(t for t in texts if t), "table", column=col,
+                                    values=[nums[0].value]))
+    return claims
+
+
 def _table_claims(rows_joined: _Joined, section: str) -> list[Claim]:
     # Line breaks inside \makecell{a \\ b} are not row ends; blank them without shifting offsets.
     text = MAKECELL_RE.sub(lambda m: m.group(0).replace("\\\\", "  "), rows_joined.text)
@@ -371,7 +395,9 @@ def _table_claims(rows_joined: _Joined, section: str) -> list[Claim]:
             continue
         idx = next((i for i in (0, 1) if i < len(cells) and _param_key(cells[i][1])), None)
         if idx is None:
-            if header is None and not any(_is_number_cell(t) for t in texts if t):
+            found = _assignment_claims(cells, texts, header, group, rows_joined, section)
+            claims.extend(found)
+            if not found and header is None and not any(_is_number_cell(t) for t in texts if t):
                 header = texts
             continue
         key = _param_key(cells[idx][1])

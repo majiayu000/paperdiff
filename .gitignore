@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 paperdiff-out/
 examples/rerun-grokfast-mnist/*/rerun.log
+dist/

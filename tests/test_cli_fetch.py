@@ -51,3 +51,10 @@ def test_rerun_without_allow_run_exits_nonzero(tmp_path, capsys):
                     'targets: [{name: x, paper: {value: 1}, metric: {regex: "(1)"}}]\n')
     assert main(["rerun", str(spec), "-o", str(tmp_path / "o")]) == 2
     assert "--allow-run" in capsys.readouterr().err
+
+
+def test_fail_on_conflict(paper_dir, repo_dir, tmp_path, capsys):
+    args = ["check", str(paper_dir), str(repo_dir), "-o", str(tmp_path / "o")]
+    assert main(args + ["--fail-on", "missing_in_paper"]) == 0
+    assert main(args + ["--fail-on", "conflict"]) == 1
+    assert "conflict=" in capsys.readouterr().err

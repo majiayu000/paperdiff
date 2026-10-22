@@ -1,25 +1,42 @@
-# paperdiff
+# paperdiff — paper vs code consistency checker for ML research
 
-**Check what a paper says it did against what its code is configured to do, line by line.**
+[![CI](https://github.com/majiayu000/paperdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/majiayu000/paperdiff/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](pyproject.toml)
 
-`paperdiff` reads a paper (arXiv LaTeX source, or a PDF) and its public repository, pulls out the stated
-hyperparameters, data split, seeds and training length from both sides, and lists every difference with the
-paper `file:line` and the code `file:line` (as a GitHub permalink). If you allow it, it then reruns one or two key
-numbers on your machine under a hard time and GPU budget.
+**paperdiff is a reproducibility tool for ML research: give it an arXiv paper and its GitHub repository, and it
+lists every place where the hyperparameters, data split, random seeds and training length stated in the paper differ
+from the code's configs, argparse defaults and README commands, with the paper `file:line` and the code `file:line`
+side by side.** If you allow it, it then reruns one or two key numbers on your own machine under a hard time and
+GPU budget.
 
-> **paperdiff reports differences. It does not judge whether a paper is correct and it never draws conclusions
-> about authors.** A difference can be a typo, a later code change, a setting defined somewhere the tool cannot
-> see, a documented choice (BERT's README says its demo settings differ from the paper), or an extraction error
-> by this tool. Read both sides before repeating anything it says.
+> **paperdiff only reports differences. It does not judge whether a paper is correct and it never draws
+> conclusions about authors.** A difference can be a typo, a later code change, a setting defined somewhere the
+> tool cannot see, a documented choice (BERT's README says its demo settings differ from the paper), or an
+> extraction error by this tool. Read both sides before repeating anything it says.
+
+Use it to check a paper before you spend a week reproducing it, to check your own camera-ready code before
+submission (`--fail-on conflict` in CI), or to check the code a submission links to while reviewing.
 
 ## Install
 
-Python 3.12+ and [uv](https://docs.astral.sh/uv/). Not on PyPI yet; install from a checkout:
+Python 3.12+ and [uv](https://docs.astral.sh/uv/):
 
 ```bash
-git clone https://github.com/majiayu000/paperdiff && cd paperdiff
-uv tool install .
+uv tool install git+https://github.com/majiayu000/paperdiff
 ```
+
+## What it found in well-known papers
+
+Checked against the official repositories ([examples/](examples/)); each item was confirmed by hand on both sides.
+
+- **LoRA** (arXiv:2106.09685): the RoBERTa-base hyperparameter table says LoRA α = 8; all eight
+  `examples/NLU/roberta_base_*.sh` scripts pass `--lora_alpha 16`, the question asked in
+  [microsoft/LoRA#37](https://github.com/microsoft/LoRA/issues/37). DeBERTa XXL: table r = 8, α = 8; scripts
+  `--lora_r 16 --lora_alpha 32`.
+- **DPO** (arXiv:2305.18290): the appendix gives a default learning rate of 1e-6; `config/config.yaml` sets 5e-7.
+- **Grokfast** (arXiv:2405.20233): the README's MNIST command omits `--filter ema` (default `none`), so it trains
+  without the method; the rerun demo measures it.
 
 ## Use
 
@@ -28,7 +45,8 @@ paperdiff check 2305.18290 https://github.com/eric-mitchell/direct-preference-op
 ```
 
 Inputs: an arXiv ID or URL, a `.pdf`, a `.tex` file, a LaTeX directory or a source `.tar.gz`; a git URL or a local
-directory. `--exclude 'vendor/*'` skips vendored code. Output: `out/report.md` and `out/report.json`.
+directory. `--exclude 'vendor/*'` skips vendored code; `--fail-on conflict` exits 1 when there is a conflict.
+Output: `out/report.md` and `out/report.json`.
 
 Part of the DPO report it produces:
 
@@ -52,7 +70,20 @@ Every finding is one of:
 | missing_in_paper | the code fixes a seed / learning rate / batch size / training length / optimizer the paper never mentions |
 | match | same value |
 
-### Rerun a number (off by default)
+## How it compares
+
+| | paperdiff | [SciCoQA](https://github.com/UKPLab/scicoqa) | [claimcheck](https://github.com/asech109/claimcheck) | [Paper2Code](https://github.com/going-doer/Paper2Code) | [PaperBench](https://github.com/openai/frontier-evals) |
+|---|---|---|---|---|---|
+| Checks a paper against its existing code | ✅ | ✅ (dataset + LLM eval) | own paper only | ✗ generates new code | ✗ scores agents |
+| arXiv ID in, LaTeX source preferred | ✅ | ✗ | ✗ | ✅ | — |
+| argparse / YAML / hydra / README commands | ✅ | via LLM | YAML/logs | — | — |
+| `file:line` on both sides | ✅ | ✗ | ✅ | — | — |
+| Reruns numbers under a budget | opt-in | ✗ | ✗ | ✗ | ✅ |
+| Needs an LLM API key | no | yes | no | yes | yes |
+
+Full matrix with sources: [docs/comparison.md](docs/comparison.md).
+
+## Rerun a number (off by default)
 
 `paperdiff check` never executes the target code. `paperdiff rerun` runs one command from a spec, and refuses to
 start without `--allow-run` and a `budget.timeout_s`:
@@ -87,7 +118,7 @@ Four papers, checked against their official repositories on 2026-10-22 ([example
 | Grokfast (2405.20233) | 35 | 0 | 1 | 10 | 1 | 24 |
 | DPO (2305.18290) | 6 | 2 | 1 | 0 | 1 | 3 |
 | BERT (1810.04805) | 31 | 7 | 13 | 5 | 1 | 6 |
-| LoRA (2106.09685) | 346 | 28 | 180 | 22 | 1 | 116 |
+| LoRA (2106.09685) | 411 | 36 | 209 | 22 | 1 | 144 |
 
 Conflicts confirmed by hand include LoRA's RoBERTa-base α (table 8, every `roberta_base_*.sh` passes 16, the same
 thing a user asked about in [microsoft/LoRA#37](https://github.com/microsoft/LoRA/issues/37)), RoBERTa-large
@@ -114,7 +145,7 @@ in 789 s. The repo's README command, which omits `--filter ema` and so trains wi
   command > config > argparse/flag default > code default precedence.
 
 Design and limits: [docs/design.md](docs/design.md). Prior art and real reviewer complaints:
-[docs/research.md](docs/research.md).
+[docs/research.md](docs/research.md). Feature comparison: [docs/comparison.md](docs/comparison.md).
 
 ## Limits
 

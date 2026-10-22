@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "paperdiff_version": "0.1.0",
-  "generated": "2026-10-22T05:21:41Z",
+  "generated": "2026-10-22T08:14:57Z",
   "paper": {
     "label": "arXiv:2106.09685",
     "title": "LoRA: Low-Rank Adaptation of Large Language Models",
     "source_kind": "latex",
     "main_file": "iclr2022_conference.tex",
-    "claims": 346
+    "claims": 411
   },
   "repo": {
     "path": "/Users/apple/.cache/paperdiff/repos/github.com_microsoft_LoRA",
@@ -19,11 +19,11 @@
     ]
   },
   "summary": {
-    "conflict": 28,
-    "ambiguous": 180,
+    "conflict": 36,
+    "ambiguous": 209,
     "missing_in_code": 22,
     "missing_in_paper": 1,
-    "match": 116
+    "match": 144
   },
   "findings": [
     {
@@ -384,6 +384,246 @@
         0.01
       ],
       "scope": "GPT-2",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / MNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_mnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > MNLI",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / SST-2"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_sst2.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > SST-2",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / MRPC"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_mrpc.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > MRPC",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / CoLA"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_cola.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > CoLA",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / QNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_qnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > QNLI",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / QQP"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_qqp.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > QQP",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / RTE"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_rte.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > RTE",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:743",
+        "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "DeBERTa XXL LoRA / STS-B"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/deberta_v2_xxlarge_stsb.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "DeBERTa > DeBERTa XXL LoRA > STS-B",
       "note": ""
     },
     {
@@ -24191,6 +24431,198 @@
       "key": "lora_rank",
       "paper": {
         "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:1031",
+        "section": "Appendix: Additional Empirical Experiments > Low-Data Regime",
+        "context": "LoRA | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "MNLI-100"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:1031",
+        "section": "Appendix: Additional Empirical Experiments > Low-Data Regime",
+        "context": "LoRA | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "MNLI-1k"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:1031",
+        "section": "Appendix: Additional Empirical Experiments > Low-Data Regime",
+        "context": "LoRA | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "MNLI-10K"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:1031",
+        "section": "Appendix: Additional Empirical Experiments > Low-Data Regime",
+        "context": "LoRA | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "MNLI-392K"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
         "value": 2.0,
         "raw": "2",
         "loc": "iclr2022_conference.tex:1103",
@@ -24787,6 +25219,241 @@
         "context": "Rank r | 8 | 8 | 8 | 8 | 4 | 4 | 2",
         "origin": "table",
         "column": "\\# of Trainable Parameters = 18M"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 1.0,
+        "raw": "r=1",
+        "loc": "iclr2022_conference.tex:413",
+        "section": "Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?",
+        "context": "tabular r|c|ccccc | Weight Type | r=1 | r=2 | r=4 | r=8 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 2.0,
+        "raw": "r=2",
+        "loc": "iclr2022_conference.tex:413",
+        "section": "Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?",
+        "context": "tabular r|c|ccccc | Weight Type | r=1 | r=2 | r=4 | r=8 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r=4",
+        "loc": "iclr2022_conference.tex:413",
+        "section": "Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?",
+        "context": "tabular r|c|ccccc | Weight Type | r=1 | r=2 | r=4 | r=8 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r=8",
+        "loc": "iclr2022_conference.tex:413",
+        "section": "Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?",
+        "context": "tabular r|c|ccccc | Weight Type | r=1 | r=2 | r=4 | r=8 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r=64",
+        "loc": "iclr2022_conference.tex:413",
+        "section": "Appendix: Understanding the Low-Rank Updates > What is the Optimal Rank r for LoRA?",
+        "context": "tabular r|c|ccccc | Weight Type | r=1 | r=2 | r=4 | r=8 | r=64",
+        "origin": "table"
       },
       "code": [
         {
@@ -25484,6 +26151,100 @@
       "paper": {
         "key": "lora_rank",
         "value": 4.0,
+        "raw": "r=4",
+        "loc": "iclr2022_conference.tex:498",
+        "section": "Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?",
+        "context": "tabular c|ccc|ccc | r=4 | r=4 | r=4 | r=64 | r=64 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r=64",
+        "loc": "iclr2022_conference.tex:498",
+        "section": "Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?",
+        "context": "tabular c|ccc|ccc | r=4 | r=4 | r=4 | r=64 | r=64 | r=64",
+        "origin": "table"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
         "raw": "4",
         "loc": "iclr2022_conference.tex:516",
         "section": "Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?",
@@ -25536,6 +26297,870 @@
         "section": "Appendix: Understanding the Low-Rank Updates > How Does the Adaptation Matrix W Compare to W?",
         "context": "See \\autoref{app:amplification_factor} for why r=64 has a smaller amplification factor.",
         "origin": "text"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 1.0,
+        "raw": "r=1",
+        "loc": "iclr2022_conference.tex:951",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "5 * Adapter^ H | r=1 | 7.1 M | 71.9 | 89.8",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r=4",
+        "loc": "iclr2022_conference.tex:952",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r=4 | 21.2 M | 73.2 | 91.0",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r=8",
+        "loc": "iclr2022_conference.tex:953",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r=8 | 40.1 M | 73.2 | 91.5",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r=64",
+        "loc": "iclr2022_conference.tex:955",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r=64 | 304.4 M | 72.6 | 91.5",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 2.0,
+        "raw": "r_{v}=2",
+        "loc": "iclr2022_conference.tex:957",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "LoRA | r_ v =2 | 4.7 M | 73.4 | 91.7",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 1.0,
+        "raw": "r_q=r_v=1",
+        "loc": "iclr2022_conference.tex:958",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=1 | 4.7 M | 73.4 | 91.3",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 2.0,
+        "raw": "r_q=r_v=2",
+        "loc": "iclr2022_conference.tex:959",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=2 | 9.4 M | 73.3 | 91.4",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 1.0,
+        "raw": "r_q=r_k=r_v=r_o=1",
+        "loc": "iclr2022_conference.tex:960",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_k=r_v=r_o=1 | 9.4 M | 74.1 | 91.2",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r_q=r_v=4",
+        "loc": "iclr2022_conference.tex:961",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=4 | 18.8 M | 73.7 | 91.3",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 2.0,
+        "raw": "r_q=r_k=r_v=r_o=2",
+        "loc": "iclr2022_conference.tex:962",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_k=r_v=r_o=2 | 18.8 M | 73.7 | 91.7",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:963",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=8 | 37.7 M | 73.8 | 91.6",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r_q=r_k=r_v=r_o=4",
+        "loc": "iclr2022_conference.tex:964",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_k=r_v=r_o=4 | 37.7 M | 74.0 | 91.7",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r_q=r_v=64",
+        "loc": "iclr2022_conference.tex:965",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=64 | 301.9 M | 73.6 | 91.4",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r_q=r_k=r_v=r_o=64",
+        "loc": "iclr2022_conference.tex:966",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_k=r_v=r_o=64 | 603.8 M | 73.9 | 91.4",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:968",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "LoRA+PE | r_q=r_v=8, l_p=8, l_i=4 | 37.8 M | 75.0 | 91.4",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 32.0,
+        "raw": "r_q=r_v=32",
+        "loc": "iclr2022_conference.tex:969",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=32, l_p=8, l_i=4 | 151.1 M | 75.9 | 91.1",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 64.0,
+        "raw": "r_q=r_v=64",
+        "loc": "iclr2022_conference.tex:970",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r_q=r_v=64, l_p=8, l_i=4 | 302.1 M | 76.2 | 91.3",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "no section or table title points at a specific file, so the code compared here may belong to a different experiment"
+    },
+    {
+      "category": "ambiguous",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:972",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "LoRA+PL | r_q=r_v=8, l_p=8, l_i=4 | 52.8 M | 72.9 | 90.2",
+        "origin": "table",
+        "column": "Hyperparameters"
       },
       "code": [
         {
@@ -29318,6 +30943,939 @@
       ],
       "effective": [
         256.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / MNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_mnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > MNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / SST-2"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_sst2.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > SST-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / MRPC"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_mrpc.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > MRPC",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / CoLA"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_cola.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > CoLA",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / QNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_qnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > QNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / QQP"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_qqp.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > QQP",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / RTE"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_rte.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > RTE",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:661",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa base LoRA / STS-B"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_base_stsb.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa base LoRA > STS-B",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / MNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_mnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > MNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / SST-2"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_sst2.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > SST-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / MRPC"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_mrpc.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > MRPC",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / CoLA"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_cola.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > CoLA",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / QNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_qnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > QNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / QQP"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_qqp.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > QQP",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / RTE"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_rte.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > RTE",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:669",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / STS-B"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_stsb.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > STS-B",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / MNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_mnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > MNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / SST-2"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_sst2.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > SST-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / MRPC"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_mrpc.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > MRPC",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / CoLA"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_cola.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > CoLA",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / QNLI"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_qnli.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > QNLI",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / QQP"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_qqp.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > QQP",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / RTE"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_rte.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > RTE",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 8.0,
+        "raw": "r_q=r_v=8",
+        "loc": "iclr2022_conference.tex:677",
+        "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+        "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+        "origin": "table",
+        "column": "RoBERTa large LoRA / STS-B"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 8.0,
+          "source": "command",
+          "loc": "examples/NLU/roberta_large_stsb.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        8.0
+      ],
+      "scope": "RoBERTa > RoBERTa large LoRA > STS-B",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r_q=r_v=4",
+        "loc": "iclr2022_conference.tex:778",
+        "section": "Appendix: Hyperparameters Used in Experiments > GPT-2",
+        "context": "Adaptation | r_q=r_v=4 | r_q=r_v=4 | r_q=r_v=4",
+        "origin": "table",
+        "column": "E2E"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:52",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_ft.py \\",
+          "target": "src/gpt2_ft.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:81",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_beam.py \\",
+          "target": "src/gpt2_beam.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_beam.py:62",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_ft.py:73",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        }
+      ],
+      "effective": [
+        4.0
+      ],
+      "scope": "GPT-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r_q=r_v=4",
+        "loc": "iclr2022_conference.tex:778",
+        "section": "Appendix: Hyperparameters Used in Experiments > GPT-2",
+        "context": "Adaptation | r_q=r_v=4 | r_q=r_v=4 | r_q=r_v=4",
+        "origin": "table",
+        "column": "WebNLG"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:52",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_ft.py \\",
+          "target": "src/gpt2_ft.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:81",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_beam.py \\",
+          "target": "src/gpt2_beam.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_beam.py:62",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_ft.py:73",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        }
+      ],
+      "effective": [
+        4.0
+      ],
+      "scope": "GPT-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 4.0,
+        "raw": "r_q=r_v=4",
+        "loc": "iclr2022_conference.tex:778",
+        "section": "Appendix: Hyperparameters Used in Experiments > GPT-2",
+        "context": "Adaptation | r_q=r_v=4 | r_q=r_v=4 | r_q=r_v=4",
+        "origin": "table",
+        "column": "DART"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:52",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_ft.py \\",
+          "target": "src/gpt2_ft.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 4.0,
+          "source": "command",
+          "loc": "examples/NLG/README.md:81",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 src/gpt2_beam.py \\",
+          "target": "src/gpt2_beam.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_beam.py:62",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_dim",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "examples/NLG/src/gpt2_ft.py:73",
+          "text": "parser.add_argument('--lora_dim', type=int, default=0, help='lora attn dimension')"
+        }
+      ],
+      "effective": [
+        4.0
+      ],
+      "scope": "GPT-2",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "lora_rank",
+      "paper": {
+        "key": "lora_rank",
+        "value": 16.0,
+        "raw": "r=16",
+        "loc": "iclr2022_conference.tex:954",
+        "section": "Appendix: Additional Empirical Experiments > Additional Experiments on GPT-3",
+        "context": "r=16 | 77.9 M | 73.2 | 91.5",
+        "origin": "table",
+        "column": "Hyperparameters"
+      },
+      "code": [
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/README.md:69",
+          "text": "python -m torch.distributed.launch --nproc_per_node=1 examples/text-classification/run_glue.py \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.cutoff.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        },
+        {
+          "key": "lora_rank",
+          "name": "--lora_r",
+          "value": 16.0,
+          "source": "command",
+          "loc": "examples/NLU/mnli.rdrop.sh:5",
+          "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+          "target": "examples/text-classification/run_glue.py"
+        }
+      ],
+      "effective": [
+        16.0
       ],
       "scope": "files not tied to another section",
       "note": ""

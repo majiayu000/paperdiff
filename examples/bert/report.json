@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paperdiff_version": "0.1.0",
-  "generated": "2026-10-22T05:21:41Z",
+  "generated": "2026-10-22T08:14:57Z",
   "paper": {
     "label": "arXiv:1810.04805",
     "title": "BERT: Pre-training of Deep Bidirectional Transformers for \\ Language Understanding",
