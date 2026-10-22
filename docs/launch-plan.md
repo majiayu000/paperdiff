@@ -13,14 +13,30 @@
 | 5 | 是否去 microsoft/LoRA#37、ironjr/grokfast#16 留言补充证据 | 不留言 | 留言属于外部发布动作；如果要留，只陈述"paper 表格第 X 行 vs 脚本第 Y 行"，不带评价 |
 | 6 | README 语言 | 英文 | 中文圈推广可另写一篇文章，不改 README |
 
-## 2. 发布步骤（确认后执行）
+## 2. 发布步骤（用户已批准公开；自动执行被权限策略拦下，需用户本人运行或放行）
 
 ```bash
 cd /Users/apple/Desktop/code/AI/tool/paperdiff
-uv run pytest                       # 发布前再跑一遍
-gh repo create majiayu000/paperdiff --public --source . --push
-# 可选：PyPI
-uv build && uv publish              # 用户本人执行，需要 token
+gh repo create majiayu000/paperdiff --public --source . --push \
+  --description "Paper vs code consistency checker for ML reproducibility: compare hyperparameters, data splits and seeds in an arXiv paper with its GitHub code, line by line."
+gh repo edit majiayu000/paperdiff --homepage https://majiayu000.github.io/paperdiff/ \
+  --add-topic reproducibility --add-topic machine-learning --add-topic ml-research --add-topic arxiv \
+  --add-topic hyperparameters --add-topic research-tools --add-topic peer-review --add-topic replication \
+  --add-topic latex --add-topic deep-learning --add-topic code-review --add-topic static-analysis \
+  --add-topic python --add-topic cli --add-topic paper-implementation --add-topic open-science
+gh api -X POST repos/majiayu000/paperdiff/pages -f 'source[branch]=main' -f 'source[path]=/docs'
+gh run watch --repo majiayu000/paperdiff --exit-status $(gh run list --repo majiayu000/paperdiff -L1 --json databaseId -q '.[0].databaseId')
+git tag -s v0.1.0 -m "paperdiff 0.1.0" || git tag -a v0.1.0 -m "paperdiff 0.1.0"
+git push origin v0.1.0
+gh release create v0.1.0 --repo majiayu000/paperdiff --title "paperdiff 0.1.0" --notes-file docs/release-notes-0.1.0.md
+```
+
+社交预览图（docs/social-preview.png，1280×640）只能在网页上传：仓库 Settings → General → Social preview → Edit → Upload。
+
+PyPI（不在本次范围，2026-10-23 实查 `https://pypi.org/simple/paperdiff/` 返回 404，名字可用）：
+
+```bash
+uv build && uv publish   # 需要用户本人的 PyPI token
 ```
 
 ## 3. 借 ICLR 2027 讨论期推广（11-05～11-18）
