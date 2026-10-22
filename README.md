@@ -95,7 +95,10 @@ CoLA/STS-B learning rates, and DPO's default learning rate (1e-6 in the appendix
 `config/config.yaml`). One of DPO's two conflicts is a false pairing; details and known noise are in
 [examples/README.md](examples/README.md).
 
-RERUN_RESULTS_PLACEHOLDER
+Rerun demo ([examples/rerun-grokfast-mnist/](examples/rerun-grokfast-mnist/)): Grokfast's MNIST experiment on a
+laptop CPU, 100k steps, 1500 s budget. The paper's setting reached 91.0% final validation accuracy (paper: 91.2%)
+in 789 s. The repo's README command, which omits `--filter ema` and so trains without the method, reached 90.7% in
+691 s and hit 80% and 85% at the same logged steps as the filtered run.
 
 ## How it works
 

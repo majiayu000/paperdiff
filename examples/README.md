@@ -54,7 +54,8 @@ what that means.
 
 ## Rerun: Grokfast MNIST on CPU
 
-See [rerun-grokfast-mnist/](rerun-grokfast-mnist/).
+Paper setting: 91.0% final validation accuracy (paper 91.2%, 789 s on CPU). README command verbatim: 90.7%
+(691 s). Details in [rerun-grokfast-mnist/](rerun-grokfast-mnist/README.md).
 
 ## PDF fallback
 
