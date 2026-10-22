@@ -8,7 +8,7 @@
 |---|---|---|---|
 | 1 | 仓库名与可见性 | `majiayu000/paperdiff`，public | 2026-10-22 实查：`majiayu000/paperdiff` 不存在；GitHub 上同名项目 4 个均 0★（manyapn/paperdiff 做的是"研究论断是否冲突"，Obsessus/PaperDiff 做论文并排对比，都不涉及代码）；PyPI `paperdiff` 返回 404，可用 |
 | 2 | 许可证 | MIT（已加 LICENSE） | 依赖 pypdf（BSD）、PyYAML（MIT），无冲突 |
-| 3 | 是否发 PyPI | 暂不发，README 写的是 `uv tool install .` | 发的话 `uv build && uv publish`，需要 PyPI token（用户自己操作） |
+| 3 | 是否发 PyPI | 暂不发，README 写的是 `uv tool install git+https://github.com/majiayu000/paperdiff` | 发的话 `uv build && uv publish`，需要 PyPI token（用户自己操作） |
 | 4 | 示例里点名的 4 篇论文 | 保留（都是 2018–2024 年的经典论文，差异已人工核实，并标注了 README 自己承认的差异和误配） | 若希望更保守，可只保留统计、去掉具体条目 |
 | 5 | 是否去 microsoft/LoRA#37、ironjr/grokfast#16 留言补充证据 | 不留言 | 留言属于外部发布动作；如果要留，只陈述"paper 表格第 X 行 vs 脚本第 Y 行"，不带评价 |
 | 6 | README 语言 | 英文 | 中文圈推广可另写一篇文章，不改 README |
