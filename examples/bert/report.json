@@ -1,0 +1,1426 @@
+{
+  "schema_version": 1,
+  "paperdiff_version": "0.1.0",
+  "generated": "2026-10-22T05:21:41Z",
+  "paper": {
+    "label": "arXiv:1810.04805",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for \\ Language Understanding",
+    "source_kind": "latex",
+    "main_file": "main.tex",
+    "claims": 31
+  },
+  "repo": {
+    "path": "/Users/apple/.cache/paperdiff/repos/github.com_google-research_bert",
+    "url": "https://github.com/google-research/bert",
+    "commit": "eedf5716ce1268e56f0a50264a88cafad334ac61",
+    "excludes": []
+  },
+  "summary": {
+    "conflict": 7,
+    "ambiguous": 13,
+    "missing_in_code": 5,
+    "missing_in_paper": 1,
+    "match": 6
+  },
+  "findings": [
+    {
+      "category": "conflict",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 0.0001,
+        "raw": "1e-4",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We use Adam with learning rate of 1e-4, {\\beta}_1=0.9, {\\beta}_2=0.999, L2 weight decay of 0.01, learning rate warmup over the first 10,000 steps, and linear decay of the learning rate.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 2e-05,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:68",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        }
+      ],
+      "effective": [
+        2e-05
+      ],
+      "scope": "Pre-training Procedure",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 256.0,
+        "raw": "256",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We train with batch size of 256 sequences (256 sequences * 512 tokens = 128,000 tokens/batch) for 1,000,000 steps, which is approximately 40 epochs over the 3.3 billion word corpus.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 32.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:64",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        }
+      ],
+      "effective": [
+        32.0
+      ],
+      "scope": "Pre-training Procedure",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 1000000.0,
+        "raw": "1,000,000",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We train with batch size of 256 sequences (256 sequences * 512 tokens = 128,000 tokens/batch) for 1,000,000 steps, which is approximately 40 epochs over the 3.3 billion word corpus.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--num_train_steps",
+          "value": 20.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "train_steps",
+          "name": "num_train_steps",
+          "value": 100000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:70",
+          "text": "flags.DEFINE_integer(\"num_train_steps\", 100000, \"Number of training steps.\")"
+        }
+      ],
+      "effective": [
+        20.0
+      ],
+      "scope": "Pre-training Procedure",
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 1000000.0,
+        "raw": "1M",
+        "loc": "bert_details.tex:89",
+        "section": "Appendix: Additional Details for BERT > Comparison of BERT, ELMo ,and OpenAI GPT",
+        "context": "\\item GPT was trained for 1M steps with a batch size of 32,000 words;",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--num_train_steps",
+          "value": 20.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "train_steps",
+          "name": "num_train_steps",
+          "value": 100000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:70",
+          "text": "flags.DEFINE_integer(\"num_train_steps\", 100000, \"Number of training steps.\")"
+        }
+      ],
+      "effective": [
+        20.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 1000000.0,
+        "raw": "1,000,000",
+        "loc": "more_ablation.tex:14",
+        "section": "Appendix: Additional Ablation Studies > Effect of Number of Training Steps",
+        "context": "Does BERT really need such a large amount of pre-training (128,000 words/batch * 1,000,000 steps) to achieve high fine-tuning accuracy? \\\\ Answer:",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--num_train_steps",
+          "value": 20.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "train_steps",
+          "name": "num_train_steps",
+          "value": 100000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:70",
+          "text": "flags.DEFINE_integer(\"num_train_steps\", 100000, \"Number of training steps.\")"
+        }
+      ],
+      "effective": [
+        20.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 1000000.0,
+        "raw": "1M",
+        "loc": "more_ablation.tex:15",
+        "section": "Appendix: Additional Ablation Studies > Effect of Number of Training Steps",
+        "context": "Yes, \\bertbase achieves almost 1.0\\% additional accuracy on MNLI when trained on 1M steps compared to 500k steps.",
+        "origin": "text",
+        "values": [
+          1000000.0,
+          500000.0
+        ]
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--num_train_steps",
+          "value": 20.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "train_steps",
+          "name": "num_train_steps",
+          "value": 100000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:70",
+          "text": "flags.DEFINE_integer(\"num_train_steps\", 100000, \"Number of training steps.\")"
+        }
+      ],
+      "effective": [
+        20.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 500000.0,
+        "raw": "500k",
+        "loc": "more_ablation.tex:15",
+        "section": "Appendix: Additional Ablation Studies > Effect of Number of Training Steps",
+        "context": "Yes, \\bertbase achieves almost 1.0\\% additional accuracy on MNLI when trained on 1M steps compared to 500k steps.",
+        "origin": "text",
+        "values": [
+          1000000.0,
+          500000.0
+        ]
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--num_train_steps",
+          "value": 20.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "train_steps",
+          "name": "num_train_steps",
+          "value": 100000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:70",
+          "text": "flags.DEFINE_integer(\"num_train_steps\", 100000, \"Number of training steps.\")"
+        }
+      ],
+      "effective": [
+        20.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "ambiguous",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 5e-05,
+        "raw": "5e-5",
+        "loc": "bert_details.tex:90",
+        "section": "Appendix: Additional Details for BERT > Comparison of BERT, ELMo ,and OpenAI GPT",
+        "context": "\\item GPT used the same learning rate of 5e-5 for all fine-tuning experiments;",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 2e-05,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_classifier.py:84",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 0.2,
+          "source": "code_literal",
+          "loc": "optimization_test.py:36",
+          "text": "optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)"
+        }
+      ],
+      "effective": [
+        2e-05
+      ],
+      "scope": "files not tied to another section",
+      "note": "paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 5e-05,
+        "raw": "5e-5",
+        "loc": "experiment.tex:19",
+        "section": "Experiments > GLUE",
+        "context": "For each task, we selected the best fine-tuning learning rate (among 5e-5, 4e-5, 3e-5, and 2e-5) on the Dev set.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 2e-05,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_classifier.py:84",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 0.2,
+          "source": "code_literal",
+          "loc": "optimization_test.py:36",
+          "text": "optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)"
+        }
+      ],
+      "effective": [
+        2e-05
+      ],
+      "scope": "files not tied to another section",
+      "note": "paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 5e-05,
+        "raw": "5e-5",
+        "loc": "experiment.tex:43",
+        "section": "Experiments > SQuAD v1.1",
+        "context": "We fine-tune for 3 epochs with a learning rate of 5e-5 and a batch size of 32.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_squad.py:91",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        }
+      ],
+      "effective": [
+        3e-05
+      ],
+      "scope": "SQuAD v1.1",
+      "note": "paper value appears only as a flag_default (run_squad.py:91), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 5e-05,
+        "raw": "5e-5",
+        "loc": "experiment.tex:57",
+        "section": "Experiments > SQuAD v2.0",
+        "context": "We fine-tuned for 2 epochs with a learning rate of 5e-5 and a batch size of 48.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 3e-05,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_squad.py:91",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        }
+      ],
+      "effective": [
+        3e-05
+      ],
+      "scope": "SQuAD v2.0",
+      "note": "paper value appears only as a flag_default (run_squad.py:91), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 16.0,
+        "raw": "16",
+        "loc": "bert_details.tex:66",
+        "section": "Appendix: Additional Details for BERT > Fine-tuning Procedure",
+        "context": "\\begin{itemize}[noitemsep] \\item {\\bf Batch size}: 16, 32 \\item {\\bf Learning rate (Adam)}: 5e-5, 3e-5, 2e-5 \\item {\\bf Number of epochs}: 2, 3, 4 \\end{itemize}",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 32.0,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 8.0,
+          "source": "command",
+          "loc": "README.md:749",
+          "text": "python extract_features.py \\",
+          "target": "extract_features.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "extract_features.py:63",
+          "text": "flags.DEFINE_integer(\"batch_size\", 32, \"Batch size for predictions.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_classifier.py:78",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 13.0,
+          "source": "code_default",
+          "loc": "modeling_test.py:35",
+          "text": "batch_size=13,"
+        }
+      ],
+      "effective": [
+        32.0,
+        8.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 32.0,
+        "raw": "32",
+        "loc": "experiment.tex:19",
+        "section": "Experiments > GLUE",
+        "context": "We use a batch size of 32 and fine-tune for 3 epochs over the data for all GLUE tasks.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 32.0,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 8.0,
+          "source": "command",
+          "loc": "README.md:749",
+          "text": "python extract_features.py \\",
+          "target": "extract_features.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "extract_features.py:63",
+          "text": "flags.DEFINE_integer(\"batch_size\", 32, \"Batch size for predictions.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_classifier.py:78",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 13.0,
+          "source": "code_default",
+          "loc": "modeling_test.py:35",
+          "text": "batch_size=13,"
+        }
+      ],
+      "effective": [
+        32.0,
+        8.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "2 different values at the same precedence (command); one matches, and the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 32.0,
+        "raw": "32",
+        "loc": "experiment.tex:43",
+        "section": "Experiments > SQuAD v1.1",
+        "context": "We fine-tune for 3 epochs with a learning rate of 5e-5 and a batch size of 32.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 12.0,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_squad.py:86",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        }
+      ],
+      "effective": [
+        12.0,
+        24.0
+      ],
+      "scope": "SQuAD v1.1",
+      "note": "paper value appears only as a flag_default (run_squad.py:86), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 48.0,
+        "raw": "48",
+        "loc": "experiment.tex:57",
+        "section": "Experiments > SQuAD v2.0",
+        "context": "We fine-tuned for 2 epochs with a learning rate of 5e-5 and a batch size of 48.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 12.0,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 24.0,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_squad.py:86",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        }
+      ],
+      "effective": [
+        12.0,
+        24.0
+      ],
+      "scope": "SQuAD v2.0",
+      "note": "the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 16.0,
+        "raw": "16",
+        "loc": "experiment.tex:69",
+        "section": "Experiments > SWAG",
+        "context": "We fine-tune the model for 3 epochs with a learning rate of 2e-5 and a batch size of 16.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--train_batch_size",
+          "value": 32.0,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 8.0,
+          "source": "command",
+          "loc": "README.md:749",
+          "text": "python extract_features.py \\",
+          "target": "extract_features.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "extract_features.py:63",
+          "text": "flags.DEFINE_integer(\"batch_size\", 32, \"Batch size for predictions.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "train_batch_size",
+          "value": 32.0,
+          "source": "flag_default",
+          "loc": "run_classifier.py:78",
+          "text": "flags.DEFINE_integer(\"train_batch_size\", 32, \"Total batch size for training.\")"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 13.0,
+          "source": "code_default",
+          "loc": "modeling_test.py:35",
+          "text": "batch_size=13,"
+        }
+      ],
+      "effective": [
+        32.0,
+        8.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "ambiguous",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 3.0,
+        "raw": "3",
+        "loc": "experiment.tex:43",
+        "section": "Experiments > SQuAD v1.1",
+        "context": "We fine-tune for 3 epochs with a learning rate of 5e-5 and a batch size of 32.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "num_train_epochs",
+          "value": 3.0,
+          "source": "flag_default",
+          "loc": "run_squad.py:93",
+          "text": "flags.DEFINE_float(\"num_train_epochs\", 3.0,"
+        }
+      ],
+      "effective": [
+        2.0
+      ],
+      "scope": "SQuAD v1.1",
+      "note": "paper value appears only as a flag_default (run_squad.py:93), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "warmup_steps",
+      "paper": {
+        "key": "warmup_steps",
+        "value": 10000.0,
+        "raw": "10,000",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We use Adam with learning rate of 1e-4, {\\beta}_1=0.9, {\\beta}_2=0.999, L2 weight decay of 0.01, learning rate warmup over the first 10,000 steps, and linear decay of the learning rate.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "warmup_steps",
+          "name": "--num_warmup_steps",
+          "value": 10.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "warmup_steps",
+          "name": "num_warmup_steps",
+          "value": 10000.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:72",
+          "text": "flags.DEFINE_integer(\"num_warmup_steps\", 10000, \"Number of warmup steps.\")"
+        }
+      ],
+      "effective": [
+        10.0
+      ],
+      "scope": "Pre-training Procedure",
+      "note": "paper value appears only as a flag_default (run_pretraining.py:72), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 4.0,
+        "raw": "four",
+        "loc": "ablation.tex:33",
+        "section": "Ablation Studies > Effect of Model Size",
+        "context": "However, we believe that this is the first work to demonstrate convincingly that scaling to extreme model sizes also leads to large improvements on very small scale tasks, provided that the model has been sufficiently pre-trained. presented mixed results on the downstream task impact of increasin...",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 12.0,
+          "source": "code_default",
+          "loc": "modeling.py:757",
+          "text": "num_hidden_layers=12,"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 12.0,
+          "source": "code_default",
+          "loc": "modeling.py:37",
+          "text": "num_hidden_layers=12,"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 5.0,
+          "source": "code_default",
+          "loc": "modeling_test.py:42",
+          "text": "num_hidden_layers=5,"
+        }
+      ],
+      "effective": [
+        12.0,
+        5.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "ambiguous",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "ablation.tex:51",
+        "section": "Ablation Studies > Feature-based Approach with BERT",
+        "context": "These contextual embeddings are used as input to a randomly initialized two-layer 768-dimensional BiLSTM before the classification layer.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 12.0,
+          "source": "code_default",
+          "loc": "modeling.py:757",
+          "text": "num_hidden_layers=12,"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 12.0,
+          "source": "code_default",
+          "loc": "modeling.py:37",
+          "text": "num_hidden_layers=12,"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_hidden_layers",
+          "value": 5.0,
+          "source": "code_default",
+          "loc": "modeling_test.py:42",
+          "text": "num_hidden_layers=5,"
+        }
+      ],
+      "effective": [
+        12.0,
+        5.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 40.0,
+        "raw": "40",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We train with batch size of 256 sequences (256 sequences * 512 tokens = 128,000 tokens/batch) for 1,000,000 steps, which is approximately 40 epochs over the 3.3 billion word corpus.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "Pre-training Procedure",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "weight_decay",
+      "paper": {
+        "key": "weight_decay",
+        "value": 0.01,
+        "raw": "0.01",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We use Adam with learning rate of 1e-4, {\\beta}_1=0.9, {\\beta}_2=0.999, L2 weight decay of 0.01, learning rate warmup over the first 10,000 steps, and linear decay of the learning rate.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "Pre-training Procedure",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "dropout",
+      "paper": {
+        "key": "dropout",
+        "value": 0.1,
+        "raw": "0.1",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We use a dropout probability of 0.1 on all layers.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "Pre-training Procedure",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "Adam",
+        "raw": "Adam",
+        "loc": "bert_details.tex:55",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "We use Adam with learning rate of 1e-4, {\\beta}_1=0.9, {\\beta}_2=0.999, L2 weight decay of 0.01, learning rate warmup over the first 10,000 steps, and linear decay of the learning rate.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "Pre-training Procedure",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_train_samples",
+      "paper": {
+        "key": "num_train_samples",
+        "value": 3600.0,
+        "raw": "3,600",
+        "loc": "ablation.tex:29",
+        "section": "Ablation Studies > Effect of Model Size",
+        "context": "We can see that larger models lead to a strict accuracy improvement across all four datasets, even for MRPC which only has 3,600 labeled training examples, and is substantially different from the pre-training tasks.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": null,
+      "note": "no setting with this name found in the code"
+    },
+    {
+      "category": "missing_in_paper",
+      "key": "seed",
+      "paper": null,
+      "code": [
+        {
+          "key": "seed",
+          "name": "--random_seed",
+          "value": 12345.0,
+          "source": "command",
+          "loc": "README.md:908",
+          "text": "python create_pretraining_data.py \\",
+          "target": "create_pretraining_data.py"
+        },
+        {
+          "key": "seed",
+          "name": "random_seed",
+          "value": 12345.0,
+          "source": "flag_default",
+          "loc": "create_pretraining_data.py:54",
+          "text": "flags.DEFINE_integer(\"random_seed\", 12345, \"Random seed for data generation.\")"
+        }
+      ],
+      "effective": [
+        12345.0
+      ],
+      "scope": null,
+      "note": "the code sets this but the paper never mentions it"
+    },
+    {
+      "category": "match",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 2e-05,
+        "raw": "2e-5",
+        "loc": "experiment.tex:69",
+        "section": "Experiments > SWAG",
+        "context": "We fine-tune the model for 3 epochs with a learning rate of 2e-5 and a batch size of 16.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 2e-05,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_classifier.py:84",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 0.2,
+          "source": "code_literal",
+          "loc": "optimization_test.py:36",
+          "text": "optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)"
+        }
+      ],
+      "effective": [
+        2e-05
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 3.0,
+        "raw": "3",
+        "loc": "experiment.tex:19",
+        "section": "Experiments > GLUE",
+        "context": "We use a batch size of 32 and fine-tune for 3 epochs over the data for all GLUE tasks.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 3.0,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "epochs",
+          "name": "num_train_epochs",
+          "value": 3.0,
+          "source": "flag_default",
+          "loc": "run_classifier.py:86",
+          "text": "flags.DEFINE_float(\"num_train_epochs\", 3.0,"
+        }
+      ],
+      "effective": [
+        3.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 2.0,
+        "raw": "2",
+        "loc": "experiment.tex:57",
+        "section": "Experiments > SQuAD v2.0",
+        "context": "We fine-tuned for 2 epochs with a learning rate of 5e-5 and a batch size of 48.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:527",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:564",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:610",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 2.0,
+          "source": "command",
+          "loc": "README.md:646",
+          "text": "python run_squad.py \\",
+          "target": "run_squad.py"
+        },
+        {
+          "key": "epochs",
+          "name": "num_train_epochs",
+          "value": 3.0,
+          "source": "flag_default",
+          "loc": "run_squad.py:93",
+          "text": "flags.DEFINE_float(\"num_train_epochs\", 3.0,"
+        }
+      ],
+      "effective": [
+        2.0
+      ],
+      "scope": "SQuAD v2.0",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 3.0,
+        "raw": "3",
+        "loc": "experiment.tex:69",
+        "section": "Experiments > SWAG",
+        "context": "We fine-tune the model for 3 epochs with a learning rate of 2e-5 and a batch size of 16.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "--num_train_epochs",
+          "value": 3.0,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "epochs",
+          "name": "num_train_epochs",
+          "value": 3.0,
+          "source": "flag_default",
+          "loc": "run_classifier.py:86",
+          "text": "flags.DEFINE_float(\"num_train_epochs\", 3.0,"
+        }
+      ],
+      "effective": [
+        3.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "dropout",
+      "paper": {
+        "key": "dropout",
+        "value": 0.1,
+        "raw": "0.1",
+        "loc": "bert_details.tex:63",
+        "section": "Appendix: Additional Details for BERT > Fine-tuning Procedure",
+        "context": "The dropout probability was always kept at 0.1.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "dropout",
+          "name": "dropout_prob",
+          "value": 0.1,
+          "source": "code_default",
+          "loc": "modeling.py:437",
+          "text": "dropout_prob=0.1):"
+        },
+        {
+          "key": "dropout",
+          "name": "hidden_dropout_prob",
+          "value": 0.1,
+          "source": "code_default",
+          "loc": "modeling.py:761",
+          "text": "hidden_dropout_prob=0.1,"
+        },
+        {
+          "key": "dropout",
+          "name": "hidden_dropout_prob",
+          "value": 0.1,
+          "source": "code_default",
+          "loc": "modeling.py:41",
+          "text": "hidden_dropout_prob=0.1,"
+        },
+        {
+          "key": "dropout",
+          "name": "hidden_dropout_prob",
+          "value": 0.1,
+          "source": "code_default",
+          "loc": "modeling_test.py:46",
+          "text": "hidden_dropout_prob=0.1,"
+        }
+      ],
+      "effective": [
+        0.1
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "max_seq_length",
+      "paper": {
+        "key": "max_seq_length",
+        "value": 128.0,
+        "raw": "128",
+        "loc": "bert_details.tex:59",
+        "section": "Appendix: Additional Details for BERT > Pre-training Procedure",
+        "context": "To speed up pretraing in our experiments, we pre-train the model with sequence length of 128 for 90\\% of the steps.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "max_seq_length",
+          "name": "--max_seq_length",
+          "value": 128.0,
+          "source": "command",
+          "loc": "README.md:908",
+          "text": "python create_pretraining_data.py \\",
+          "target": "create_pretraining_data.py"
+        },
+        {
+          "key": "max_seq_length",
+          "name": "--max_seq_length",
+          "value": 128.0,
+          "source": "command",
+          "loc": "README.md:929",
+          "text": "python run_pretraining.py \\",
+          "target": "run_pretraining.py"
+        },
+        {
+          "key": "max_seq_length",
+          "name": "max_seq_length",
+          "value": 128.0,
+          "source": "flag_default",
+          "loc": "create_pretraining_data.py:49",
+          "text": "flags.DEFINE_integer(\"max_seq_length\", 128, \"Maximum sequence length.\")"
+        },
+        {
+          "key": "max_seq_length",
+          "name": "max_seq_length",
+          "value": 128.0,
+          "source": "flag_default",
+          "loc": "run_pretraining.py:49",
+          "text": "flags.DEFINE_integer("
+        }
+      ],
+      "effective": [
+        128.0
+      ],
+      "scope": "Pre-training Procedure",
+      "note": ""
+    }
+  ],
+  "disclaimer": "paperdiff reports differences between what a paper states and what its code configures. A difference can come from a typo, a later code change, a setting defined elsewhere, a reasonable implementation choice, or an extraction error by this tool. It is not a judgement about whether the paper is correct, and it is not an accusation of misconduct. Check each item by hand before citing it."
+}

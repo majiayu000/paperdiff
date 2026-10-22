@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+paperdiff-out/
+examples/rerun-grokfast-mnist/*/rerun.log

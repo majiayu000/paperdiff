@@ -1,0 +1,1014 @@
+{
+  "schema_version": 1,
+  "paperdiff_version": "0.1.0",
+  "generated": "2026-10-22T05:21:40Z",
+  "paper": {
+    "label": "arXiv:2405.20233",
+    "title": "Grokfast: Accelerated Grokking by \\ Amplifying Slow Gradients",
+    "source_kind": "latex",
+    "main_file": "main.tex",
+    "claims": 35
+  },
+  "repo": {
+    "path": "/Users/apple/.cache/paperdiff/repos/github.com_ironjr_grokfast",
+    "url": "https://github.com/ironjr/grokfast",
+    "commit": "93b2248e351d4bb9e4dda8ac32a6999b8970404b",
+    "excludes": []
+  },
+  "summary": {
+    "ambiguous": 1,
+    "missing_in_code": 10,
+    "missing_in_paper": 1,
+    "match": 24
+  },
+  "findings": [
+    {
+      "category": "ambiguous",
+      "key": "hidden_size",
+      "paper": {
+        "key": "hidden_size",
+        "value": 128.0,
+        "raw": "128",
+        "loc": "sections/B_implementation.tex:10",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "The network is a two-layer decoder-only Transformer with hidden dimension of 128 and 4 heads in its attention.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "hidden_size",
+          "name": "dim",
+          "value": 128.0,
+          "source": "code_default",
+          "loc": "main.py:50",
+          "text": "def __init__(self, dim=128, num_layers=2, num_heads=4, num_tokens=97, seq_len=5):"
+        },
+        {
+          "key": "hidden_size",
+          "name": "dim",
+          "value": 128.0,
+          "source": "code_literal",
+          "loc": "main.py:105",
+          "text": "model = Decoder("
+        },
+        {
+          "key": "hidden_size",
+          "name": "dim",
+          "value": 1.0,
+          "source": "code_literal",
+          "loc": "main.py:152",
+          "text": "dl = torch.split(data, args.batch_size, dim=1)"
+        }
+      ],
+      "effective": [
+        128.0,
+        1.0
+      ],
+      "scope": "files not tied to another section",
+      "note": "2 different values at the same precedence (code_default); one matches, and the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 50000.0,
+        "raw": "50k",
+        "loc": "sections/B_implementation.tex:38",
+        "section": "Appendix: Task Details > QM9",
+        "context": "The network is initialized with weights x 3 larger than that of Kaiming initialization and trained for 50k iterations.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "QM9",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "warmup_steps",
+      "paper": {
+        "key": "warmup_steps",
+        "value": 10.0,
+        "raw": "10",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": null,
+      "note": "no setting with this name found in the code"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "hidden_size",
+      "paper": {
+        "key": "hidden_size",
+        "value": 256.0,
+        "raw": "256",
+        "loc": "sections/B_implementation.tex:44",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "For IMDb dataset , we use LSTM with two layers, embedding dimension of 64, hidden dimension of 256, and vocabulary size of 1001, including the padding token.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "IMDb",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "2",
+        "loc": "sections/4_experiment.tex:57",
+        "section": "Experiment > IMDb",
+        "context": "Finally, we train a 2-layer LSTM network for sentiment analysis in the IMDb dataset under the grokking phenomenon .",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "IMDb",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "sections/B_implementation.tex:34",
+        "section": "Appendix: Task Details > QM9",
+        "context": "The output of the Graph ConvNet is a global average pooling, followed by a two-layer MLP with a ReLU and hidden channel of 32.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "QM9",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "sections/B_implementation.tex:44",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "For IMDb dataset , we use LSTM with two layers, embedding dimension of 64, hidden dimension of 256, and vocabulary size of 1001, including the padding token.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "IMDb",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "train_fraction",
+      "paper": {
+        "key": "train_fraction",
+        "value": 0.5,
+        "raw": "50:50",
+        "loc": "sections/B_implementation.tex:36",
+        "section": "Appendix: Task Details > QM9",
+        "context": "The data is again randomly split into train and validation sets with 50:50 size ratio.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": null,
+      "note": "no setting with this name found in the code"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "train_fraction",
+      "paper": {
+        "key": "train_fraction",
+        "value": 0.75,
+        "raw": "75:25",
+        "loc": "sections/B_implementation.tex:49",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "We trained the model with the first 1000 rows from the dataset, split into train and validation sets with 75:25 size ratio.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": null,
+      "note": "no setting with this name found in the code"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_train_samples",
+      "paper": {
+        "key": "num_train_samples",
+        "value": 100.0,
+        "raw": "100",
+        "loc": "sections/B_implementation.tex:35",
+        "section": "Appendix: Task Details > QM9",
+        "context": "To simulate the overfitting environment, we use the first 100 samples from the data.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "QM9",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_code",
+      "key": "num_train_samples",
+      "paper": {
+        "key": "num_train_samples",
+        "value": 1000.0,
+        "raw": "1000",
+        "loc": "sections/B_implementation.tex:49",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "We trained the model with the first 1000 rows from the dataset, split into train and validation sets with 75:25 size ratio.",
+        "origin": "text"
+      },
+      "code": [],
+      "effective": [],
+      "scope": "IMDb",
+      "note": "not set in the files this section points to"
+    },
+    {
+      "category": "missing_in_paper",
+      "key": "seed",
+      "paper": null,
+      "code": [
+        {
+          "key": "seed",
+          "name": "--seed",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "main.py:244",
+          "text": "parser.add_argument(\"--seed\", type=int, default=0)"
+        },
+        {
+          "key": "seed",
+          "name": "--seed",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "main_imdb.py:371",
+          "text": "parser.add_argument(\"--seed\", type=int, default=0)"
+        },
+        {
+          "key": "seed",
+          "name": "--seed",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:225",
+          "text": "parser.add_argument(\"--seed\", type=int, default=0)"
+        },
+        {
+          "key": "seed",
+          "name": "--seed",
+          "value": 0.0,
+          "source": "argparse_default",
+          "loc": "main_qm9.py:210",
+          "text": "parser.add_argument(\"--seed\", type=int, default=0)"
+        }
+      ],
+      "effective": [
+        0.0
+      ],
+      "scope": null,
+      "note": "the code sets this but the paper never mentions it"
+    },
+    {
+      "category": "match",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 0.001,
+        "raw": "10^{-3}",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--lr",
+          "value": 0.001,
+          "source": "argparse_default",
+          "loc": "main.py:248",
+          "text": "parser.add_argument(\"--lr\", type=float, default=1e-3)"
+        }
+      ],
+      "effective": [
+        0.001
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 0.001,
+        "raw": "10^{-3}",
+        "loc": "sections/B_implementation.tex:22",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We use the batch size of 200 and trained with an AdamW optimizer with a constant learning rate of 10^{-3} until 10^{5} training iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--lr",
+          "value": 0.001,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:233",
+          "text": "parser.add_argument(\"--lr\", type=float, default=1e-3)"
+        }
+      ],
+      "effective": [
+        0.001
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 0.001,
+        "raw": "10^{-3}",
+        "loc": "sections/B_implementation.tex:37",
+        "section": "Appendix: Task Details > QM9",
+        "context": "We use batch size of 32, an AdamW optimizer with a constant learning rate of 10^{-3} .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--lr",
+          "value": 0.001,
+          "source": "argparse_default",
+          "loc": "main_qm9.py:212",
+          "text": "parser.add_argument(\"--lr\", type=float, default=1e-3)"
+        }
+      ],
+      "effective": [
+        0.001
+      ],
+      "scope": "QM9",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 0.0003,
+        "raw": "3 x 10^{-4}",
+        "loc": "sections/B_implementation.tex:48",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "The network was trained by a binary cross entropy loss and an AdamW optimizer with learning rate of 3 x 10^{-4} and batch size of 50.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--lr",
+          "value": 0.0003,
+          "source": "argparse_default",
+          "loc": "main_imdb.py:374",
+          "text": "parser.add_argument(\"--lr\", type=float, default=0.0003)"
+        }
+      ],
+      "effective": [
+        0.0003
+      ],
+      "scope": "IMDb",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 512.0,
+        "raw": "512",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 512.0,
+          "source": "argparse_default",
+          "loc": "main.py:247",
+          "text": "parser.add_argument(\"--batch_size\", type=int, default=512)"
+        }
+      ],
+      "effective": [
+        512.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 200.0,
+        "raw": "200",
+        "loc": "sections/B_implementation.tex:22",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We use the batch size of 200 and trained with an AdamW optimizer with a constant learning rate of 10^{-3} until 10^{5} training iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 200.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:229",
+          "text": "parser.add_argument(\"--batch_size\", type=int, default=200)"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 50.0,
+          "source": "code_default",
+          "loc": "main_mnist.py:26",
+          "text": "def compute_accuracy(network, dataset, device, N=2000, batch_size=50):"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 50.0,
+          "source": "code_default",
+          "loc": "main_mnist.py:43",
+          "text": "def compute_loss(network, dataset, loss_function, device, N=2000, batch_size=50):"
+        }
+      ],
+      "effective": [
+        200.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 32.0,
+        "raw": "32",
+        "loc": "sections/B_implementation.tex:37",
+        "section": "Appendix: Task Details > QM9",
+        "context": "We use batch size of 32, an AdamW optimizer with a constant learning rate of 10^{-3} .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 32.0,
+          "source": "argparse_default",
+          "loc": "main_qm9.py:211",
+          "text": "parser.add_argument(\"--batch_size\", type=int, default=32)"
+        }
+      ],
+      "effective": [
+        32.0
+      ],
+      "scope": "QM9",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 50.0,
+        "raw": "50",
+        "loc": "sections/B_implementation.tex:48",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "The network was trained by a binary cross entropy loss and an AdamW optimizer with learning rate of 3 x 10^{-4} and batch size of 50.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "--batch_size",
+          "value": 50.0,
+          "source": "argparse_default",
+          "loc": "main_imdb.py:373",
+          "text": "parser.add_argument(\"--batch_size\", type=int, default=50)"
+        }
+      ],
+      "effective": [
+        50.0
+      ],
+      "scope": "IMDb",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 100000.0,
+        "raw": "10^{5}",
+        "loc": "sections/B_implementation.tex:22",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We use the batch size of 200 and trained with an AdamW optimizer with a constant learning rate of 10^{-3} until 10^{5} training iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--optimization_steps",
+          "value": 100000.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:228",
+          "text": "parser.add_argument(\"--optimization_steps\", type=int, default=100000)"
+        }
+      ],
+      "effective": [
+        100000.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "train_steps",
+      "paper": {
+        "key": "train_steps",
+        "value": 10000.0,
+        "raw": "10k",
+        "loc": "sections/B_implementation.tex:50",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "We stopped the training at 10k iterations as shown in Figure .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "train_steps",
+          "name": "--iterations",
+          "value": 10000.0,
+          "source": "argparse_default",
+          "loc": "main_imdb.py:372",
+          "text": "parser.add_argument(\"--iterations\", type=int, default=10000)"
+        }
+      ],
+      "effective": [
+        10000.0
+      ],
+      "scope": "IMDb",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "Adam",
+        "raw": "Adam",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "optimizer",
+          "name": "--optimizer",
+          "value": "Adam",
+          "source": "argparse_default",
+          "loc": "main.py:252",
+          "text": "parser.add_argument(\"--optimizer\", default=\"Adam\")"
+        }
+      ],
+      "effective": [
+        "Adam"
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "AdamW",
+        "raw": "AdamW",
+        "loc": "sections/B_implementation.tex:22",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We use the batch size of 200 and trained with an AdamW optimizer with a constant learning rate of 10^{-3} until 10^{5} training iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "optimizer",
+          "name": "--optimizer",
+          "value": "AdamW",
+          "source": "argparse_default",
+          "loc": "main_mnist.py:231",
+          "text": "parser.add_argument(\"--optimizer\", type=str, default=\"AdamW\")"
+        }
+      ],
+      "effective": [
+        "AdamW"
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "AdamW",
+        "raw": "AdamW",
+        "loc": "sections/B_implementation.tex:37",
+        "section": "Appendix: Task Details > QM9",
+        "context": "We use batch size of 32, an AdamW optimizer with a constant learning rate of 10^{-3} .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "optimizer",
+          "name": "optimizer",
+          "value": "AdamW",
+          "source": "code_literal",
+          "loc": "main_qm9.py:80",
+          "text": "optimizer = torch.optim.AdamW(net.parameters(), lr=args.lr, weight_decay=args.weight_decay)"
+        }
+      ],
+      "effective": [
+        "AdamW"
+      ],
+      "scope": "QM9",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "AdamW",
+        "raw": "AdamW",
+        "loc": "sections/B_implementation.tex:48",
+        "section": "Appendix: Task Details > IMDb",
+        "context": "The network was trained by a binary cross entropy loss and an AdamW optimizer with learning rate of 3 x 10^{-4} and batch size of 50.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "optimizer",
+          "name": "optimizer",
+          "value": "AdamW",
+          "source": "code_literal",
+          "loc": "main_imdb.py:211",
+          "text": "optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)"
+        }
+      ],
+      "effective": [
+        "AdamW"
+      ],
+      "scope": "IMDb",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "adam_beta1",
+      "paper": {
+        "key": "adam_beta1",
+        "value": 0.9,
+        "raw": "0.9",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "adam_beta1",
+          "name": "--beta1",
+          "value": 0.9,
+          "source": "argparse_default",
+          "loc": "main.py:249",
+          "text": "parser.add_argument(\"--beta1\", type=float, default=0.9)"
+        }
+      ],
+      "effective": [
+        0.9
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "adam_beta2",
+      "paper": {
+        "key": "adam_beta2",
+        "value": 0.98,
+        "raw": "0.98",
+        "loc": "sections/B_implementation.tex:13",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "We use cross entropy loss to train the network and an Adam with betas (\\beta_{1}, \\beta_{2}) = (0.9, 0.98) , a constant learning rate of 10^{-3} , batch size of 512 , and linear learning rate warmup schedule over the first 10 iterations.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "adam_beta2",
+          "name": "--beta2",
+          "value": 0.98,
+          "source": "argparse_default",
+          "loc": "main.py:250",
+          "text": "parser.add_argument(\"--beta2\", type=float, default=0.98)"
+        }
+      ],
+      "effective": [
+        0.98
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "hidden_size",
+      "paper": {
+        "key": "hidden_size",
+        "value": 200.0,
+        "raw": "200",
+        "loc": "sections/B_implementation.tex:19",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We train a three-layer MLP with hidden width of 200 and ReLU activations for the MNIST classification task .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "hidden_size",
+          "name": "--width",
+          "value": 200.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:237",
+          "text": "parser.add_argument(\"--width\", type=int, default=200)"
+        },
+        {
+          "key": "hidden_size",
+          "name": "dim",
+          "value": 1.0,
+          "source": "code_literal",
+          "loc": "main_mnist.py:37",
+          "text": "predicted_labels = torch.argmax(logits, dim=1)"
+        }
+      ],
+      "effective": [
+        200.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "sections/1_introduction.tex:5",
+        "section": "Introduction",
+        "context": "The phenomenon was first reported by for a two-layer Transformer trained using a simple algorithmic dataset.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_default",
+          "loc": "main.py:50",
+          "text": "def __init__(self, dim=128, num_layers=2, num_heads=4, num_tokens=97, seq_len=5):"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_literal",
+          "loc": "main.py:105",
+          "text": "model = Decoder("
+        }
+      ],
+      "effective": [
+        2.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "sections/2_preliminary.tex:62",
+        "section": "Amplifying the Low-Frequencies of the Stochastic Gradients > Experiment",
+        "context": "The network is a two-layer decoder-only Transformer trained to predict the answer of a modular binary multiplication operation x x y (mod 97) .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_default",
+          "loc": "main.py:50",
+          "text": "def __init__(self, dim=128, num_layers=2, num_heads=4, num_tokens=97, seq_len=5):"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_literal",
+          "loc": "main.py:105",
+          "text": "model = Decoder("
+        }
+      ],
+      "effective": [
+        2.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 3.0,
+        "raw": "three",
+        "loc": "sections/4_experiment.tex:38",
+        "section": "Experiment > MNIST",
+        "context": "The first is a three-layer ReLU-MLP trained for MNIST classification task which exhibits the grokking phenomenon.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "--depth",
+          "value": 3.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:236",
+          "text": "parser.add_argument(\"--depth\", type=int, default=3)"
+        }
+      ],
+      "effective": [
+        3.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 2.0,
+        "raw": "two",
+        "loc": "sections/B_implementation.tex:10",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "The network is a two-layer decoder-only Transformer with hidden dimension of 128 and 4 heads in its attention.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_default",
+          "loc": "main.py:50",
+          "text": "def __init__(self, dim=128, num_layers=2, num_heads=4, num_tokens=97, seq_len=5):"
+        },
+        {
+          "key": "num_layers",
+          "name": "num_layers",
+          "value": 2.0,
+          "source": "code_literal",
+          "loc": "main.py:105",
+          "text": "model = Decoder("
+        }
+      ],
+      "effective": [
+        2.0
+      ],
+      "scope": "files not tied to another section",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_layers",
+      "paper": {
+        "key": "num_layers",
+        "value": 3.0,
+        "raw": "three",
+        "loc": "sections/B_implementation.tex:19",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We train a three-layer MLP with hidden width of 200 and ReLU activations for the MNIST classification task .",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_layers",
+          "name": "--depth",
+          "value": 3.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:236",
+          "text": "parser.add_argument(\"--depth\", type=int, default=3)"
+        }
+      ],
+      "effective": [
+        3.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_heads",
+      "paper": {
+        "key": "num_heads",
+        "value": 4.0,
+        "raw": "4",
+        "loc": "sections/B_implementation.tex:10",
+        "section": "Appendix: Task Details > Binary Operation (Algorithmic Data)",
+        "context": "The network is a two-layer decoder-only Transformer with hidden dimension of 128 and 4 heads in its attention.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_heads",
+          "name": "num_heads",
+          "value": 4.0,
+          "source": "code_default",
+          "loc": "main.py:50",
+          "text": "def __init__(self, dim=128, num_layers=2, num_heads=4, num_tokens=97, seq_len=5):"
+        },
+        {
+          "key": "num_heads",
+          "name": "num_heads",
+          "value": 4.0,
+          "source": "code_literal",
+          "loc": "main.py:105",
+          "text": "model = Decoder("
+        }
+      ],
+      "effective": [
+        4.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "num_train_samples",
+      "paper": {
+        "key": "num_train_samples",
+        "value": 1000.0,
+        "raw": "1000",
+        "loc": "sections/B_implementation.tex:23",
+        "section": "Appendix: Task Details > MNIST",
+        "context": "We use a smaller subset of 1000 images from training images to train the network in order to simulate overfitting environment.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "num_train_samples",
+          "name": "--train_points",
+          "value": 1000.0,
+          "source": "argparse_default",
+          "loc": "main_mnist.py:227",
+          "text": "parser.add_argument(\"--train_points\", type=int, default=1000)"
+        }
+      ],
+      "effective": [
+        1000.0
+      ],
+      "scope": "MNIST",
+      "note": ""
+    }
+  ],
+  "disclaimer": "paperdiff reports differences between what a paper states and what its code configures. A difference can come from a typo, a later code change, a setting defined elsewhere, a reasonable implementation choice, or an extraction error by this tool. It is not a judgement about whether the paper is correct, and it is not an accusation of misconduct. Check each item by hand before citing it."
+}

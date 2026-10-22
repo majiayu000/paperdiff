@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "paperdiff_version": "0.1.0",
+  "generated": "2026-10-22T05:21:40Z",
+  "paper": {
+    "label": "arXiv:2305.18290",
+    "title": "Direct Preference Optimization:\\ Your Language Model is Secretly a Reward Model",
+    "source_kind": "latex",
+    "main_file": "main.tex",
+    "claims": 6
+  },
+  "repo": {
+    "path": "/Users/apple/.cache/paperdiff/repos/github.com_eric-mitchell_direct-preference-optimization",
+    "url": "https://github.com/eric-mitchell/direct-preference-optimization",
+    "commit": "f8b8c0f49dc92a430bae41585f9d467d3618fe2f",
+    "excludes": []
+  },
+  "summary": {
+    "conflict": 2,
+    "ambiguous": 1,
+    "missing_in_paper": 1,
+    "match": 3
+  },
+  "findings": [
+    {
+      "category": "conflict",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 1e-06,
+        "raw": "1e-6",
+        "loc": "main.tex:583",
+        "section": "Appendix: DPO Implementation Details and Hyperparameters",
+        "context": "Unless noted otherwise, we use a \\beta = 0.1, batch size of 64 and the RMSprop optimizer with a learning rate of 1e-6 by default.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "lr",
+          "value": 5e-07,
+          "source": "config",
+          "loc": "config/config.yaml:51",
+          "text": "lr: 5e-7"
+        }
+      ],
+      "effective": [
+        5e-07
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "conflict",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 3.0,
+        "raw": "3",
+        "loc": "main.tex:591",
+        "section": "Appendix: Further Details on the Experimental Set-Up > IMDb Sentiment Experiment and Baseline Details",
+        "context": "The RLHF reward model is initialized from the gpt2-large model and trained for 3 epochs on the preference datasets, and we take the checkpoint with the highest validation set accuracy.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "n_epochs",
+          "value": 1.0,
+          "source": "config",
+          "loc": "config/config.yaml:68",
+          "text": "n_epochs: 1"
+        }
+      ],
+      "effective": [
+        1.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "ambiguous",
+      "key": "batch_size",
+      "paper": {
+        "key": "batch_size",
+        "value": 64.0,
+        "raw": "64",
+        "loc": "main.tex:583",
+        "section": "Appendix: DPO Implementation Details and Hyperparameters",
+        "context": "Unless noted otherwise, we use a \\beta = 0.1, batch size of 64 and the RMSprop optimizer with a learning rate of 1e-6 by default.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 64.0,
+          "source": "command",
+          "loc": "README.md:32",
+          "text": "python -u train.py model=pythia69 datasets=[hh] loss=sft exp_name=anthropic_dpo_pythia69 gradient_accumulation_steps=2 batch_size=64 eval_batch_size=32 trainer=FSDPTrainer sample_during_eval=false",
+          "target": "train.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 64.0,
+          "source": "command",
+          "loc": "README.md:36",
+          "text": "python -u train.py model=blank_model model.name_or_path=/PATH/TO/LLAMA/WEIGHTS model.block_name=LlamaDecoderLayer datasets=[hh,shp] loss=sft exp_name=anthropic_shp_sft_llama_7b gradient_accumulation_s",
+          "target": "train.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 32.0,
+          "source": "command",
+          "loc": "README.md:52",
+          "text": "python -u train.py model=pythia69 datasets=[hh] loss=dpo loss.beta=0.1 model.archive=/path/to/checkpoint/from/sft/step-XXXX/policy.pt exp_name=anthropic_dpo_pythia69 gradient_accumulation_steps=2 batc",
+          "target": "train.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 64.0,
+          "source": "command",
+          "loc": "README.md:75",
+          "text": "python -u train.py model=pythia28 datasets=[hh] loss=sft exp_name=anthropic_dpo_pythia28 gradient_accumulation_steps=2 batch_size=64 eval_batch_size=32 trainer=FSDPTrainer sample_during_eval=false mod",
+          "target": "train.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 64.0,
+          "source": "command",
+          "loc": "README.md:85",
+          "text": "python -u train.py model=pythia28 datasets=[hh] loss=dpo loss.beta=0.1 exp_name=anthropic_dpo_pythia28 gradient_accumulation_steps=2 batch_size=64 eval_batch_size=32 trainer=FSDPTrainer sample_during_",
+          "target": "train.py"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 4.0,
+          "source": "config",
+          "loc": "config/config.yaml:8",
+          "text": "batch_size: 4"
+        },
+        {
+          "key": "batch_size",
+          "name": "batch_size",
+          "value": 1.0,
+          "source": "code_default",
+          "loc": "preference_datasets.py:283",
+          "text": "batch_size: int = 1,"
+        }
+      ],
+      "effective": [
+        64.0,
+        32.0
+      ],
+      "scope": null,
+      "note": "2 different values at the same precedence (command); one matches, and the tool cannot tell which one this experiment used"
+    },
+    {
+      "category": "missing_in_paper",
+      "key": "seed",
+      "paper": null,
+      "code": [
+        {
+          "key": "seed",
+          "name": "seed",
+          "value": 0.0,
+          "source": "config",
+          "loc": "config/config.yaml:2",
+          "text": "seed: 0"
+        },
+        {
+          "key": "seed",
+          "name": "seed",
+          "value": 0.0,
+          "source": "code_default",
+          "loc": "preference_datasets.py:290",
+          "text": "seed:int = 0,"
+        },
+        {
+          "key": "seed",
+          "name": "seed",
+          "value": 42.0,
+          "source": "code_literal",
+          "loc": "preference_datasets.py:56",
+          "text": "dataset = dataset.shuffle(seed=42)"
+        }
+      ],
+      "effective": [
+        0.0
+      ],
+      "scope": null,
+      "note": "the code sets this but the paper never mentions it"
+    },
+    {
+      "category": "match",
+      "key": "epochs",
+      "paper": {
+        "key": "epochs",
+        "value": 1.0,
+        "raw": "1",
+        "loc": "main.tex:591",
+        "section": "Appendix: Further Details on the Experimental Set-Up > IMDb Sentiment Experiment and Baseline Details",
+        "context": "We first use supervised fine-tuning on a subset of the IMDB data for 1 epoch.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "epochs",
+          "name": "n_epochs",
+          "value": 1.0,
+          "source": "config",
+          "loc": "config/config.yaml:68",
+          "text": "n_epochs: 1"
+        }
+      ],
+      "effective": [
+        1.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "warmup_steps",
+      "paper": {
+        "key": "warmup_steps",
+        "value": 150.0,
+        "raw": "150",
+        "loc": "main.tex:583",
+        "section": "Appendix: DPO Implementation Details and Hyperparameters",
+        "context": "We linearly warmup the learning rate from 0 to 1e-6 over 150 steps.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "warmup_steps",
+          "name": "warmup_steps",
+          "value": 150.0,
+          "source": "config",
+          "loc": "config/config.yaml:83",
+          "text": "warmup_steps: 150"
+        }
+      ],
+      "effective": [
+        150.0
+      ],
+      "scope": null,
+      "note": ""
+    },
+    {
+      "category": "match",
+      "key": "optimizer",
+      "paper": {
+        "key": "optimizer",
+        "value": "RMSprop",
+        "raw": "RMSprop",
+        "loc": "main.tex:583",
+        "section": "Appendix: DPO Implementation Details and Hyperparameters",
+        "context": "Unless noted otherwise, we use a \\beta = 0.1, batch size of 64 and the RMSprop optimizer with a learning rate of 1e-6 by default.",
+        "origin": "text"
+      },
+      "code": [
+        {
+          "key": "optimizer",
+          "name": "optimizer",
+          "value": "RMSprop",
+          "source": "config",
+          "loc": "config/config.yaml:80",
+          "text": "optimizer: RMSprop"
+        }
+      ],
+      "effective": [
+        "RMSprop"
+      ],
+      "scope": null,
+      "note": ""
+    }
+  ],
+  "disclaimer": "paperdiff reports differences between what a paper states and what its code configures. A difference can come from a typo, a later code change, a setting defined elsewhere, a reasonable implementation choice, or an extraction error by this tool. It is not a judgement about whether the paper is correct, and it is not an accusation of misconduct. Check each item by hand before citing it."
+}

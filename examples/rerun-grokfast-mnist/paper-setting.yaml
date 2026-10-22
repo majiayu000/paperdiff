@@ -1,0 +1,13 @@
+# Grokfast (arXiv:2405.20233) MNIST: the setting the paper states in sections/4_experiment.tex:40
+# ("alpha = 0.8, lambda = 0.1, wd = 2.0"), run on CPU. `paperdiff check` clones the repo to this path.
+repo: ~/.cache/paperdiff/repos/github.com_ironjr_grokfast
+command: [uv, run, --no-project, --python, "3.12", --with, torch, --with, torchvision, --with, matplotlib,
+          --with, tqdm, python, main_mnist.py, --label, paperdiff, --filter, ema,
+          --alpha, "0.8", --lamb, "0.1", --weight_decay, "2.0"]
+budget: {timeout_s: 1500, gpus: 0, tokens: null}
+targets:
+  - name: final_val_acc_percent
+    paper: {value: 91.2, source: "sections/4_experiment.tex:41"}
+    # tqdm description: "L: <train>|<val>. A: <train acc>%|<val acc>%"; the last one is the final evaluation
+    metric: {regex: "A: [0-9.]+%\\|([0-9.]+)%", pick: last}
+    tolerance: {abs: 1.0}

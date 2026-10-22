@@ -1,0 +1,11 @@
+# Grokfast MNIST: the README command verbatim (README.md:207). It passes --alpha/--lamb but not --filter,
+# whose default is "none" (main_mnist.py:241), so the gradient filter is not applied.
+repo: ~/.cache/paperdiff/repos/github.com_ironjr_grokfast
+command: [uv, run, --no-project, --python, "3.12", --with, torch, --with, torchvision, --with, matplotlib,
+          --with, tqdm, python, main_mnist.py, --label, test, --alpha, "0.8", --lamb, "0.1", --weight_decay, "2.0"]
+budget: {timeout_s: 1500, gpus: 0, tokens: null}
+targets:
+  - name: final_val_acc_percent
+    paper: {value: 91.2, source: "sections/4_experiment.tex:41"}
+    metric: {regex: "A: [0-9.]+%\\|([0-9.]+)%", pick: last}
+    tolerance: {abs: 1.0}
