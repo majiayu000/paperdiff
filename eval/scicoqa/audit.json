@@ -1,0 +1,1302 @@
+[
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:744",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / MRPC"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 32.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_mrpc.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    32.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > MRPC",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_rank",
+   "paper": {
+    "key": "lora_rank",
+    "value": 8.0,
+    "raw": "r_q=r_v=8",
+    "loc": "iclr2022_conference.tex:743",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / QNLI"
+   },
+   "code": [
+    {
+     "key": "lora_rank",
+     "name": "--lora_r",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_qnli.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > QNLI",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / CoLA"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_cola.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > CoLA",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / MNLI"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_mnli.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > MNLI",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2310.02391v4.pdf",
+  "code_url": "https://github.com/DreamFold/FoldFlow/tree/20abc40dc241bbed408c5aa35a2a39b7778d6372",
+  "finding": {
+   "category": "conflict",
+   "key": "learning_rate",
+   "paper": {
+    "key": "learning_rate",
+    "value": 0.0001,
+    "raw": "10^{-4}",
+    "loc": "appendix.tex:755",
+    "section": "Appendix: Implementation Details and Experimental Setup > Protein Task Hyperparameters",
+    "context": "We use the Adam optimizer with constant learning rate 10^{-4}, \\beta_1 = 0.9, \\beta_2 = 0.99.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "learning_rate",
+     "name": "lr",
+     "value": 0.0,
+     "source": "code_literal",
+     "loc": "ProteinMPNN/training/model_utils.py:661",
+     "text": "torch.optim.Adam(parameters, lr=0, betas=(0.9, 0.98), eps=1e-9),"
+    },
+    {
+     "key": "learning_rate",
+     "name": "lr",
+     "value": 0.0,
+     "source": "code_literal",
+     "loc": "ProteinMPNN/training/utils.py:145",
+     "text": "torch.optim.Adam(parameters, lr=0, betas=(0.9, 0.98), eps=1e-9),"
+    }
+   ],
+   "effective": [
+    0.0
+   ],
+   "scope": "Protein Task Hyperparameters",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "lr=0 is a placeholder; NoamOpt sets the learning rate (vendored ProteinMPNN code)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:744",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / QNLI"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 32.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_qnli.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    32.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > QNLI",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "learning_rate",
+   "paper": {
+    "key": "learning_rate",
+    "value": 0.00025,
+    "raw": "0.00025",
+    "loc": "iclr2020_conference.tex:259",
+    "section": "Experimental Results > Benchmarks and setting",
+    "context": "For each experiment, the RSRAE model is optimized with Adam using a learning rate of 0.00025 and 200 epochs.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "learning_rate",
+     "name": "lr",
+     "value": 0.01,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:175",
+     "text": "hparams = dict("
+    }
+   ],
+   "effective": [
+    0.01
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper Adam lr 0.00025; this PyTorch reimplementation sets peak lr 0.01 with OneCycleLR"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:744",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / MNLI"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 32.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_mnli.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    32.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > MNLI",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_rank",
+   "paper": {
+    "key": "lora_rank",
+    "value": 8.0,
+    "raw": "r_q=r_v=8",
+    "loc": "iclr2022_conference.tex:743",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / MRPC"
+   },
+   "code": [
+    {
+     "key": "lora_rank",
+     "name": "--lora_r",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_mrpc.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > MRPC",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2004.09297v2.pdf",
+  "code_url": "https://github.com/microsoft/MPNet/tree/081523a788c1556f28dd90cbc629810f48b083fb",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 256.0,
+    "raw": "256",
+    "loc": "main.tex:497",
+    "section": "Appendix: More Ablation Studies",
+    "context": "The results are reported in Table , which are also pre-trained on the Wikipedia and BooksCorpus (16GB size) for 1M steps, with a batch size of 256 sentences and each sentence with up to 512 tokens.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 40.0,
+     "source": "command",
+     "loc": "pretraining/examples/speech_recognition/README.md:25",
+     "text": "python examples/speech_recognition/infer.py $DIR_FOR_PREPROCESSED_DATA --task speech_recognition --max-tokens 25000 --nbest 1 --path $MODEL_PATH/checkpoint_last.pt --beam 20 --results-path $RES_DIR --",
+     "target": "examples/speech_recognition/infer.py"
+    },
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 128.0,
+     "source": "argparse_default",
+     "loc": "pretraining/examples/noisychannel/rerank_options.py:31",
+     "text": "group.add_argument('-bz', '--batch-size', type=int, metavar='N', default=128,"
+    }
+   ],
+   "effective": [
+    40.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "paired with fairseq example scripts unrelated to the pre-training run"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2004.09297v2.pdf",
+  "code_url": "https://github.com/microsoft/MPNet/tree/081523a788c1556f28dd90cbc629810f48b083fb",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 16.0,
+    "raw": "16, 32",
+    "loc": "main.tex:432",
+    "section": "Appendix: Fine-tuning Hyper-parameters",
+    "context": "Batch Size | 16 | 48 | 16, 32",
+    "origin": "table",
+    "values": [
+     16.0,
+     32.0
+    ],
+    "column": "GLUE"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 40.0,
+     "source": "command",
+     "loc": "pretraining/examples/speech_recognition/README.md:25",
+     "text": "python examples/speech_recognition/infer.py $DIR_FOR_PREPROCESSED_DATA --task speech_recognition --max-tokens 25000 --nbest 1 --path $MODEL_PATH/checkpoint_last.pt --beam 20 --results-path $RES_DIR --",
+     "target": "examples/speech_recognition/infer.py"
+    },
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 128.0,
+     "source": "argparse_default",
+     "loc": "pretraining/examples/noisychannel/rerank_options.py:31",
+     "text": "group.add_argument('-bz', '--batch-size', type=int, metavar='N', default=128,"
+    }
+   ],
+   "effective": [
+    40.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "paired with fairseq example scripts unrelated to fine-tuning"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "epochs",
+   "paper": {
+    "key": "epochs",
+    "value": 200.0,
+    "raw": "200",
+    "loc": "iclr2020_conference.tex:1302",
+    "section": "Appendix: Runtime comparison",
+    "context": "More precisely, a runtime is the the time needed to complete a single experiment, where 200 epoches were used for the neural networks.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "epochs",
+     "name": "epochs",
+     "value": 150.0,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:175",
+     "text": "hparams = dict("
+    }
+   ],
+   "effective": [
+    150.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper 200 epochs; reimplementation hparams epochs=150"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "learning_rate",
+   "paper": {
+    "key": "learning_rate",
+    "value": 0.0002,
+    "raw": "2E-04",
+    "loc": "iclr2022_conference.tex:740",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "Learning Rate | 1E-04 | 6E-05 | 2E-04 | 1E-04 | 1E-04 | 1E-04 | 2E-04 | 2E-04",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / RTE"
+   },
+   "code": [
+    {
+     "key": "learning_rate",
+     "name": "--learning_rate",
+     "value": 0.00026,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_rte.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    0.00026
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > RTE",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://proceedings.mlr.press/v162/crabbe22a/crabbe22a.pdf",
+  "code_url": "https://github.com/JonathanCrabbe/Label-Free-XAI/tree/3f6fd5e98ab2fe431d6c15abeb5896c3c7747c2b",
+  "finding": {
+   "category": "conflict",
+   "key": "weight_decay",
+   "paper": {
+    "key": "weight_decay",
+    "value": 10.0,
+    "raw": "10",
+    "loc": "3b78a470666576b7.pdf:p19:L6",
+    "section": "",
+    "context": "The autoencoder is trained for 100 epochs with patience 10 by using Pytorch\u2019s Adam with hyperparameters:learning rate =.001,\u03b2 1 =.9,\u03b2 2 =.999,\u03f5 = 10\u22128, weight decay = 10\u22125.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-06,
+     "source": "config",
+     "loc": "simclr_config.yaml:33",
+     "text": "weight_decay: 1.0e-6 # \"optimized using LARS [...] and weight decay of 10\u22126\""
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:175",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:318",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:537",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:675",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:960",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/time_series.py:128",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/time_series.py:286",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    }
+   ],
+   "effective": [
+    1e-06
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "PDF text lost the minus sign: \"10\u22125\" read as 10"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_rank",
+   "paper": {
+    "key": "lora_rank",
+    "value": 8.0,
+    "raw": "r_q=r_v=8",
+    "loc": "iclr2022_conference.tex:743",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / QQP"
+   },
+   "code": [
+    {
+     "key": "lora_rank",
+     "name": "--lora_r",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_qqp.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > QQP",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://proceedings.mlr.press/v162/crabbe22a/crabbe22a.pdf",
+  "code_url": "https://github.com/JonathanCrabbe/Label-Free-XAI/tree/3f6fd5e98ab2fe431d6c15abeb5896c3c7747c2b",
+  "finding": {
+   "category": "conflict",
+   "key": "weight_decay",
+   "paper": {
+    "key": "weight_decay",
+    "value": 10.0,
+    "raw": "10",
+    "loc": "3b78a470666576b7.pdf:p19:L21",
+    "section": "",
+    "context": "The model is trained for 100 epochs by using Pytorch\u2019s SGD with hyperparameters: learning rate =.6, momentum =.9, weight decay = 10\u22126.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-06,
+     "source": "config",
+     "loc": "simclr_config.yaml:33",
+     "text": "weight_decay: 1.0e-6 # \"optimized using LARS [...] and weight decay of 10\u22126\""
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:175",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:318",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:537",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:675",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/images.py:960",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=1e-03, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/time_series.py:128",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    },
+    {
+     "key": "weight_decay",
+     "name": "weight_decay",
+     "value": 1e-05,
+     "source": "code_literal",
+     "loc": "src/lfxai/models/time_series.py:286",
+     "text": "optim = torch.optim.Adam(self.parameters(), lr=self.lr, weight_decay=1e-05)"
+    }
+   ],
+   "effective": [
+    1e-06
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "PDF text lost the minus sign: \"10\u22126\" read as 10"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_rank",
+   "paper": {
+    "key": "lora_rank",
+    "value": 8.0,
+    "raw": "r_q=r_v=8",
+    "loc": "iclr2022_conference.tex:743",
+    "section": "Appendix: Hyperparameters Used in Experiments > DeBERTa",
+    "context": "LoRA Config. | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8 | r_q=r_v=8",
+    "origin": "table",
+    "column": "DeBERTa XXL LoRA / SST-2"
+   },
+   "code": [
+    {
+     "key": "lora_rank",
+     "name": "--lora_r",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/deberta_v2_xxlarge_sst2.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "DeBERTa > DeBERTa XXL LoRA > SST-2",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "optimizer",
+   "paper": {
+    "key": "optimizer",
+    "value": "Adam",
+    "raw": "Adam",
+    "loc": "iclr2020_conference.tex:259",
+    "section": "Experimental Results > Benchmarks and setting",
+    "context": "For each experiment, the RSRAE model is optimized with Adam using a learning rate of 0.00025 and 200 epochs.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "optimizer",
+     "name": "optimizer",
+     "value": "AdamW",
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:160",
+     "text": "opt = torch.optim.AdamW(self.parameters(), lr=self.hparams.lr)"
+    }
+   ],
+   "effective": [
+    "AdamW"
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper Adam; reimplementation uses AdamW"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "num_train_samples",
+   "paper": {
+    "key": "num_train_samples",
+    "value": 10000.0,
+    "raw": "10k",
+    "loc": "iclr2022_conference.tex:984",
+    "section": "Appendix: Additional Empirical Experiments > Low-Data Regime",
+    "context": "To evaluate the performance of different adaptation approaches in the low-data regime. we randomly sample 100, 1k and 10k training examples from the full training set of MNLI to form the low-data MNLI-n tasks.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:42",
+     "text": "python examples/seq2seq/run_summarization.py \\",
+     "target": "examples/seq2seq/run_summarization.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:62",
+     "text": "python examples/seq2seq/run_summarization.py \\",
+     "target": "examples/seq2seq/run_summarization.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:141",
+     "text": "python examples/seq2seq/run_translation.py \\",
+     "target": "examples/seq2seq/run_translation.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:161",
+     "text": "python examples/seq2seq/run_translation.py \\",
+     "target": "examples/seq2seq/run_translation.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:189",
+     "text": "python examples/seq2seq/run_translation.py \\",
+     "target": "examples/seq2seq/run_translation.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--max_train_samples",
+     "value": 500.0,
+     "source": "command",
+     "loc": "examples/NLU/examples/seq2seq/README.md:219",
+     "text": "python examples/seq2seq/run_translation.py \\",
+     "target": "examples/seq2seq/run_translation.py"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--n_train",
+     "value": -1.0,
+     "source": "argparse_default",
+     "loc": "examples/NLU/examples/research_projects/rag/finetune_rag.py:420",
+     "text": "parser.add_argument(\"--n_train\", type=int, default=-1, required=False, help=\"# examples. -1 means use all.\")"
+    },
+    {
+     "key": "num_train_samples",
+     "name": "--n_train",
+     "value": -1.0,
+     "source": "argparse_default",
+     "loc": "examples/NLU/examples/research_projects/seq2seq-distillation/finetune.py:335",
+     "text": "parser.add_argument(\"--n_train\", type=int, default=-1, required=False, help=\"# examples. -1 means use all.\")"
+    }
+   ],
+   "effective": [
+    500.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "paired with a vendored HF seq2seq README example"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "learning_rate",
+   "paper": {
+    "key": "learning_rate",
+    "value": 0.0001,
+    "raw": "0.0001",
+    "loc": "iclr2020_conference.tex:1165",
+    "section": "Appendix: Sensitivity to hyperparameters > Sensitivity to the learning rate",
+    "context": "We use the same datasets of \\Secref{subsec:res} with an outlier ratio of c=0.5 and test the following values of the learning rate: 0.0001, 0.00025, 0.0005, 0.001, 0.0025, 0.005, 0.01, 0.025, 0.05, 0.1.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "learning_rate",
+     "name": "lr",
+     "value": 0.01,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:175",
+     "text": "hparams = dict("
+    }
+   ],
+   "effective": [
+    0.01
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "sentence lists a sweep of learning rates; only the first value was taken"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 128.0,
+    "raw": "128",
+    "loc": "iclr2020_conference.tex:259",
+    "section": "Experimental Results > Benchmarks and setting",
+    "context": "The batch size is 128 for each gradient step.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "batch_size",
+     "value": 64.0,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:173",
+     "text": "dl = DataLoader(ds, batch_size=64, shuffle=True, drop_last=True)"
+    },
+    {
+     "key": "batch_size",
+     "name": "batch_size",
+     "value": 64.0,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:225",
+     "text": "for batch in iter(DataLoader(ds, batch_size=64, shuffle=False)):"
+    }
+   ],
+   "effective": [
+    64.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper batch 128; reimplementation DataLoader batch_size=64"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "optimizer",
+   "paper": {
+    "key": "optimizer",
+    "value": "Adam",
+    "raw": "Adam",
+    "loc": "iclr2020_conference.tex:638",
+    "section": "Appendix: Demonstration of RSRAE for artificial data",
+    "context": "We optimize both models with 10,000 epochs and a batch gradient descent using Adam with a learning rate of 0.01.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "optimizer",
+     "name": "optimizer",
+     "value": "AdamW",
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:160",
+     "text": "opt = torch.optim.AdamW(self.parameters(), lr=self.hparams.lr)"
+    }
+   ],
+   "effective": [
+    "AdamW"
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "artificial-data demo in the paper; the code has no such experiment"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1904.00152v2.pdf",
+  "code_url": "https://github.com/marrrcin/rsrlayer-pytorch/tree/bc611cfdd4cb74398ca232aec90f68f96593f6e8",
+  "finding": {
+   "category": "conflict",
+   "key": "learning_rate",
+   "paper": {
+    "key": "learning_rate",
+    "value": 0.00025,
+    "raw": "0.00025",
+    "loc": "iclr2020_conference.tex:1164",
+    "section": "Appendix: Sensitivity to hyperparameters > Sensitivity to the learning rate",
+    "context": "In the experiments reported in \\Secref{sec:real} we fixed the learning rate for RSRAE to be 0.00025.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "learning_rate",
+     "name": "lr",
+     "value": 0.01,
+     "source": "code_literal",
+     "loc": "rsr_layer_pytorch.py:175",
+     "text": "hparams = dict("
+    }
+   ],
+   "effective": [
+    0.01
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper fixes lr 0.00025; reimplementation peak lr 0.01"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / STS-B"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_stsb.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > STS-B",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / SST-2"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_sst2.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > SST-2",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / QQP"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_qqp.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > QQP",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2004.09297v2.pdf",
+  "code_url": "https://github.com/microsoft/MPNet/tree/081523a788c1556f28dd90cbc629810f48b083fb",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 8192.0,
+    "raw": "8192",
+    "loc": "main.tex:228",
+    "section": "Experiments and Results > Experimental Setup",
+    "context": "Following the previous practice , we limit the length of sentences in each batch as up to 512 tokens and use a batch size of 8192 sentences.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 40.0,
+     "source": "command",
+     "loc": "pretraining/examples/speech_recognition/README.md:25",
+     "text": "python examples/speech_recognition/infer.py $DIR_FOR_PREPROCESSED_DATA --task speech_recognition --max-tokens 25000 --nbest 1 --path $MODEL_PATH/checkpoint_last.pt --beam 20 --results-path $RES_DIR --",
+     "target": "examples/speech_recognition/infer.py"
+    },
+    {
+     "key": "batch_size",
+     "name": "--batch-size",
+     "value": 128.0,
+     "source": "argparse_default",
+     "loc": "pretraining/examples/noisychannel/rerank_options.py:31",
+     "text": "group.add_argument('-bz', '--batch-size', type=int, metavar='N', default=128,"
+    }
+   ],
+   "effective": [
+    40.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "paired with fairseq example scripts unrelated to pre-training"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/2106.09685v2.pdf",
+  "code_url": "https://github.com/microsoft/LoRA/tree/a0d5efec36d74b5dce257492cc6943402573c4f3",
+  "finding": {
+   "category": "conflict",
+   "key": "lora_alpha",
+   "paper": {
+    "key": "lora_alpha",
+    "value": 8.0,
+    "raw": "8",
+    "loc": "iclr2022_conference.tex:662",
+    "section": "Appendix: Hyperparameters Used in Experiments > RoBERTa",
+    "context": "LoRA | 8 | 8 | 8 | 8 | 8 | 8 | 8 | 8",
+    "origin": "table",
+    "column": "RoBERTa base LoRA / RTE"
+   },
+   "code": [
+    {
+     "key": "lora_alpha",
+     "name": "--lora_alpha",
+     "value": 16.0,
+     "source": "command",
+     "loc": "examples/NLU/roberta_base_rte.sh:5",
+     "text": "python -m torch.distributed.launch --nproc_per_node=$num_gpus \\",
+     "target": "examples/text-classification/run_glue.py"
+    }
+   ],
+   "effective": [
+    16.0
+   ],
+   "scope": "RoBERTa > RoBERTa base LoRA > RTE",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper table and the per-task script really give different values (checked in both files)"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1902.09513v2.pdf",
+  "code_url": "https://github.com/measaverb/FEELVOS/tree/e9f497753ea52a91c6180e9f45fb87810898d309",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 3.0,
+    "raw": "3",
+    "loc": "paper.tex:246",
+    "section": "Method",
+    "context": "We optimize using gradient descent with a momentum of 0.9, and a learning rate of 0.0007 for 200, 000 steps with a batch size of 3 videos (\\ie 9 images) per GPU using 16 Tesla P100 GPUs.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "--batch_size",
+     "value": 7.0,
+     "source": "argparse_default",
+     "loc": "feelvos/train.py:17",
+     "text": "parser.add_argument("
+    }
+   ],
+   "effective": [
+    7.0
+   ],
+   "scope": null,
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "real",
+  "reason": "paper 3 videos per GPU; argparse default --batch_size 7"
+ },
+ {
+  "paper_url": "https://arxiv.org/pdf/1902.03642v1.pdf",
+  "code_url": "https://github.com/sverdoot/qp-wgan/tree/4a7027ac1ded9b82770b18abe4d75b6fddeff7d2",
+  "finding": {
+   "category": "conflict",
+   "key": "batch_size",
+   "paper": {
+    "key": "batch_size",
+    "value": 64.0,
+    "raw": "64",
+    "loc": "method.tex:2",
+    "section": "(q,p)-Wasserstein GAN",
+    "context": "Batch size m=64, learning rate \\alpha=10^{-4}, search space B, and the Adam parameters \\beta_0 = 0.5 and \\beta_1 = 0.999. } \\begin{algorithmic} \\FOR{iter=1,...,N_Iterations} \\STATE Sample from target x_i\\sim \\mu_t and source z_i\\sim \\mu_s, i=1,2,...,m, where m is the batch-size.",
+    "origin": "text"
+   },
+   "code": [
+    {
+     "key": "batch_size",
+     "name": "batch_size",
+     "value": 100.0,
+     "source": "code_literal",
+     "loc": "src/qpwgan.py:206",
+     "text": "sample = self.generator.sample("
+    }
+   ],
+   "effective": [
+    100.0
+   ],
+   "scope": "(q,p)-Wasserstein GAN",
+   "note": ""
+  },
+  "gold_match": false,
+  "verdict": "false",
+  "reason": "batch_size=100 is a plotting sample size, not the training batch"
+ }
+]

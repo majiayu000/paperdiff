@@ -117,7 +117,7 @@ Four papers, checked against their official repositories on 2026-10-22 ([example
 |---|---|---|---|---|---|---|
 | Grokfast (2405.20233) | 35 | 0 | 1 | 10 | 1 | 24 |
 | DPO (2305.18290) | 6 | 2 | 1 | 0 | 1 | 3 |
-| BERT (1810.04805) | 31 | 7 | 13 | 5 | 1 | 6 |
+| BERT (1810.04805) | 32 | 7 | 14 | 5 | 1 | 6 |
 | LoRA (2106.09685) | 411 | 36 | 209 | 22 | 1 | 144 |
 
 Conflicts confirmed by hand include LoRA's RoBERTa-base α (table 8, every `roberta_base_*.sh` passes 16, the same
@@ -130,6 +130,26 @@ Rerun demo ([examples/rerun-grokfast-mnist/](examples/rerun-grokfast-mnist/)): G
 laptop CPU, 100k steps, 1500 s budget. The paper's setting reached 91.0% final validation accuracy (paper: 91.2%)
 in 789 s. The repo's README command, which omits `--filter ema` and so trains without the method, reached 90.7% in
 691 s and hit 80% and 85% at the same logged steps as the filtered run.
+
+## Accuracy on SciCoQA
+
+Measured on the 92 real paper–code discrepancies in [SciCoQA](https://github.com/UKPLab/scicoqa) (ACL 2026,
+CC-BY 4.0), with matching rules and coverage labels committed before the first run
+([eval/scicoqa/](eval/scicoqa/README.md), full results in [results.md](eval/scicoqa/results.md)).
+
+| | Result |
+|---|---|
+| Recall, all 92 items, `conflict` findings | **0/92** |
+| Recall, all 92 items, any non-match finding (frozen rule) | 12/92 (13.0%); by hand, all 12 are coincidental number matches, so **0 genuine detections** |
+| Recall, coverable subset (the 3 items about a setting paperdiff compares) | **0/3**: one paper could not be fetched, two were missed |
+| Precision vs SciCoQA gold (lower bound: SciCoQA lists only discrepancies someone reported) | 0/82 conflicts match a gold item |
+| Audited precision, 30 random conflicts judged on both sides | **20/30 (66.7%)** real differences; 20/27 (74.1%) after two extraction fixes found in that sample |
+
+What this says: SciCoQA's discrepancies are mostly method-level (78 of 92: equations, loss terms, layer order),
+which paperdiff does not try to detect. Only 3 are about the value of a setting it compares, so this benchmark
+cannot show paperdiff's recall on the cases it is built for. When paperdiff does report a conflict, about two in
+three are real differences, but half of the audited sample comes from one paper (LoRA); outside it, 6 of the 12
+audited conflicts that are still reported are real. 15 of the 92 items were not evaluated because OpenReview and ACM returned HTTP 403.
 
 ## How it works
 

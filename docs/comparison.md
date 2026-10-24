@@ -24,7 +24,7 @@ each project's README or paper; "—" means the question does not apply to that 
 | Runs code | opt-in, time/GPU cap | ✗ | ✗ (by design) | ✗ | ✗ | ✅ agent | ✅ agent | ✗ | ✅ | ✗ |
 | Needs an LLM / API key | no | yes | no | yes (OpenAI or vLLM) | yes (host agent) | yes | yes | no | yes (host agent) | — |
 | Machine-readable output | JSON + Markdown | JSONL | Markdown + exit code | repo | repo | scores | scores | UI | documents | — |
-| Published accuracy figure | none yet (hand-checked examples) | best of 22 LLMs finds 46.7% of real discrepancies | none | — | — | best agent 21.0% replication score | — | "50+ dataset links, 25+ mismatches" (self-reported) | none | — |
+| Published accuracy figure | SciCoQA real split: recall 0/92 (78 of 92 items are method-level, out of scope); audited precision 20/30 | best of 22 LLMs finds 46.7% of real discrepancies | none | — | — | best agent 21.0% replication score | — | "50+ dataset links, 25+ mismatches" (self-reported) | none | — |
 
 Sources for the numbers: SciCoQA [arXiv:2601.12910](https://arxiv.org/abs/2601.12910); PaperBench
 [arXiv:2504.01848](https://arxiv.org/abs/2504.01848) (20 ICML 2024 papers, 8,316 graded items, Claude 3.5 Sonnet (New)
@@ -36,11 +36,17 @@ benchmarks.
 - **Method-level differences** (a loss term, the order of two layers) are out of scope; SciCoQA and LLM-based
   reviewers can at least attempt them. In docs/research.md about half of the real reviewer complaints are of this kind.
 - **Only listed settings** ([keys.py](../src/paperdiff/keys.py)) are compared; anything else is silently out of scope.
-- **No accuracy benchmark yet.** SciCoQA's real split (92 discrepancies) is the obvious evaluation set; running
-  paperdiff on it is future work.
+- **Recall on SciCoQA's real split is 0/92.** 78 of its 92 discrepancies are method-level and 11 are settings
+  outside keys.py; of the 3 that are about a compared setting, one paper could not be fetched and two were missed
+  (a weight decay the paper never mentions, set through a variable; layer widths written as "400 neurons" against a
+  list-valued `expert_units`). SciCoQA's best LLM finds 46.7% of the real discrepancies, so on this benchmark an
+  LLM-based reader is far ahead. Details: [eval/scicoqa/results.md](../eval/scicoqa/results.md).
 - **No web UI**, unlike the 42 checker and paperswithcode.co.
 
 ## Where it is stronger
+
+- When it reports a conflict, it is usually a real difference: 20 of 30 randomly sampled conflicts on the SciCoQA
+  papers were real (20 of 27 after two extraction fixes), with `file:line` on both sides to check.
 
 - Deterministic, no API key, runs in seconds, same answer every time.
 - Each claim is compared with the script its experiment uses, not the whole repository.

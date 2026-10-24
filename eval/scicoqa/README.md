@@ -56,3 +56,28 @@ item is not necessarily wrong. Two numbers:
   findings sorted by paper, then location), each judged by opening both cited locations: *real difference* (the
   paper and the code really state different values for the same setting of the same experiment) or *false* (wrong
   extraction or wrong pairing). Judged by the tool's author, which is a bias to keep in mind.
+
+## Results and changes made during the evaluation
+
+Results: [results.md](results.md). Earlier snapshots: [results-before-fetch-fix.md](results-before-fetch-fix.md),
+[results-before-extraction-fixes.md](results-before-extraction-fixes.md).
+
+The rules above did not change. paperdiff itself changed twice while the evaluation was running:
+
+1. **Downloads** (no test information used for the fix itself, but found because the evaluation hit it): large arXiv
+   source tarballs were cut short by the server and failed; arXiv answered HTTP 429 and paperdiff silently fell back
+   to the PDF. Now 429/503 are waited out, truncated downloads resume with a Range request, and the PDF fallback is
+   used only when the source is genuinely unavailable (403/404). Before: 53 completed runs, 6 from LaTeX source
+   and 47 from PDF; after: 62 completed, 41 from LaTeX source. Strict recall stayed 0/92; "any" recall went from
+   13/92 to 12/92 (all coincidental, see below); conflicts went from 85 to 87.
+2. **Extraction** (informed by the audit sample, i.e. by test data): PDF text that flattens `10⁻⁵` to `10−5`
+   (U+2212) is read as 1e-5, and a value followed by a comma-separated list of values is treated as a sweep.
+   Conflicts went from 87 to 82; 3 of the 30 audited findings, all judged false, are no longer reported.
+   Recall did not change.
+
+The two misses on coverable items (`f2b47a1a`, `66841ab0`) were not fixed: each fix would be tailored to a single
+test item.
+
+All 12 items detected under the "any" rule were checked by hand: in each case the matching finding is about a
+different setting that happens to share a number and a file with the gold description (for example a batch size of
+14 for an item about a loss term). None describes the gold discrepancy.
