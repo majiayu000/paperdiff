@@ -7,7 +7,7 @@ reports with `bash examples/run.sh` (each paper is fetched once from export.arxi
 |---|---|---|---|---|---|---|---|
 | [Grokfast](grokfast/report.md) (arXiv:2405.20233) | ironjr/grokfast `93b2248e351d` | 35 | 0 | 1 | 10 | 1 | 24 |
 | [DPO](dpo/report.md) (arXiv:2305.18290) | eric-mitchell/direct-preference-optimization `f8b8c0f49dc9` | 6 | 2 | 1 | 0 | 1 | 3 |
-| [BERT](bert/report.md) (arXiv:1810.04805) | google-research/bert `eedf5716ce12` | 31 | 7 | 13 | 5 | 1 | 6 |
+| [BERT](bert/report.md) (arXiv:1810.04805) | google-research/bert `eedf5716ce12` | 32 | 7 | 14 | 5 | 1 | 6 |
 | [LoRA](lora/report.md) (arXiv:2106.09685) | microsoft/LoRA `c4593f060e6a` | 411 | 36 | 209 | 22 | 1 | 144 |
 
 LoRA was checked with `--exclude 'examples/NLU/src/*' --exclude 'examples/NLU/examples/*'` because that

@@ -58,3 +58,48 @@ def test_fail_on_conflict(paper_dir, repo_dir, tmp_path, capsys):
     assert main(args + ["--fail-on", "missing_in_paper"]) == 0
     assert main(args + ["--fail-on", "conflict"]) == 1
     assert "conflict=" in capsys.readouterr().err
+
+
+def test_get_retries_rate_limits_and_truncated_downloads(monkeypatch):
+    import http.client
+    import io
+    import urllib.error
+
+    from paperdiff import fetch
+
+    calls = []
+
+    class Resp(io.BytesIO):
+        status = 206
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+    def fake_urlopen(req, timeout):
+        calls.append(req.full_url)
+        if len(calls) == 1:
+            raise urllib.error.HTTPError(req.full_url, 429, "Too Many Requests", {"Retry-After": "1"}, None)
+        if len(calls) == 2:
+            raise http.client.IncompleteRead(b"who", 2)
+        assert req.headers["Range"] == "bytes=3-"
+        return Resp(b"le")
+
+    monkeypatch.setattr(fetch.urllib.request, "urlopen", fake_urlopen)
+    monkeypatch.setattr(fetch.time, "sleep", lambda s: None)
+    assert fetch._get("https://export.arxiv.org/src/x") == b"whole" and len(calls) == 3
+
+
+def test_rate_limit_does_not_silently_switch_to_pdf(monkeypatch, tmp_path):
+    from paperdiff import fetch
+
+    monkeypatch.setenv("PAPERDIFF_CACHE", str(tmp_path))
+
+    def always_429(url):
+        raise fetch.FetchError(f"GET {url} failed: HTTP 429", status=429)
+
+    monkeypatch.setattr(fetch, "_get", always_429)
+    with pytest.raises(fetch.FetchError, match="429"):
+        fetch.fetch_arxiv("2405.20233")

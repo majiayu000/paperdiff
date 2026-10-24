@@ -22,6 +22,8 @@ NUM_RE = re.compile(
     (?:
         10\s*\^\s*\{?\s*(?P<exp3>[-+−]?\d+)\s*\}?
         |
+        10\s*(?P<exp4>−\d+)  # PDF text flattens a superscript: 10⁻⁵ comes out as "10−5" (U+2212)
+        |
         (?P<mant>(?:\d{1,3}(?:,\d{3})+(?!\d)|\d+(?:\.\d+)?|\.\d+))
         (?:\s*[eE]\s*(?P<exp>[-+−]?\d+))?
         (?:\s*(?:x|\*)\s*10\s*\^\s*\{?\s*(?P<exp2>[-+−]?\d+)\s*\}?)?
@@ -61,8 +63,8 @@ def find_numbers(s: str, words: bool = False) -> list[Num]:
     """Find numbers in already-cleaned text, in order of appearance."""
     out: list[Num] = []
     for m in NUM_RE.finditer(s):
-        if m.group("exp3") is not None:
-            v = 10.0 ** int(m.group("exp3").replace("−", "-"))
+        if m.group("exp3") is not None or m.group("exp4") is not None:
+            v = 10.0 ** int((m.group("exp3") or m.group("exp4")).replace("−", "-"))
         else:
             v = float(m.group("mant").replace(",", ""))
             if m.group("exp"):

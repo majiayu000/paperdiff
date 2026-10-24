@@ -9,10 +9,12 @@ arXiv rules followed here (see docs/design.md §3.1):
 from __future__ import annotations
 
 import gzip
+import http.client
 import io
 import os
 import re
 import subprocess
+import sys
 import tarfile
 import time
 import urllib.error
@@ -25,13 +27,17 @@ from . import __version__
 ARXIV_BASE = "https://export.arxiv.org"
 USER_AGENT = f"paperdiff/{__version__} (single-paper fetch; https://github.com/majiayu000/paperdiff)"
 MIN_INTERVAL_S = 3.0
+MAX_ATTEMPTS = 8
+BACKOFF_S = 60.0
 ARXIV_ID_RE = re.compile(r"^(?:arxiv:)?(\d{4}\.\d{4,5}(?:v\d+)?|[a-z\-]+(?:\.[A-Z]{2})?/\d{7}(?:v\d+)?)$", re.I)
 
 _last_request = 0.0
 
 
 class FetchError(RuntimeError):
-    pass
+    def __init__(self, message: str, status: int | None = None):
+        super().__init__(message)
+        self.status = status
 
 
 def cache_dir() -> Path:
@@ -48,20 +54,42 @@ def parse_arxiv_id(text: str) -> str | None:
 
 
 def _get(url: str) -> bytes:
+    """GET with the 3 s spacing. Rate limits are waited out; a download the server cuts short is resumed with a
+    Range request from where it stopped."""
     global _last_request
-    wait = MIN_INTERVAL_S - (time.monotonic() - _last_request)
-    if wait > 0:
-        time.sleep(wait)
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            return resp.read()
-    except urllib.error.HTTPError as e:
-        raise FetchError(f"GET {url} failed: HTTP {e.code}") from e
-    except urllib.error.URLError as e:
-        raise FetchError(f"GET {url} failed: {e.reason}") from e
-    finally:
-        _last_request = time.monotonic()
+    data = b""
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        wait = MIN_INTERVAL_S - (time.monotonic() - _last_request)
+        if wait > 0:
+            time.sleep(wait)
+        headers = {"User-Agent": USER_AGENT}
+        if data:
+            headers["Range"] = f"bytes={len(data)}-"
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                if data and resp.status != 206:
+                    data = b""  # server ignored the Range header; start over
+                return data + resp.read()
+        except http.client.IncompleteRead as e:
+            data += e.partial
+            if attempt == MAX_ATTEMPTS:
+                raise FetchError(f"GET {url} failed: connection closed after {len(data)} bytes, "
+                                 f"{MAX_ATTEMPTS} attempts") from e
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 503) and attempt < MAX_ATTEMPTS:
+                # Rate limited: wait as asked (or back off) instead of switching to another input.
+                retry_after = e.headers.get("Retry-After", "")
+                delay = float(retry_after) if retry_after.isdigit() else BACKOFF_S * attempt
+                print(f"paperdiff: {url} returned HTTP {e.code}; retrying in {delay:.0f} s", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            raise FetchError(f"GET {url} failed: HTTP {e.code}", status=e.code) from e
+        except urllib.error.URLError as e:
+            raise FetchError(f"GET {url} failed: {e.reason}") from e
+        finally:
+            _last_request = time.monotonic()
+    raise AssertionError("unreachable")
 
 
 @dataclass
@@ -96,7 +124,9 @@ def fetch_arxiv(arxiv_id: str) -> PaperSource:
         try:
             blob = _get(f"{ARXIV_BASE}/src/{arxiv_id}")
             _unpack_source(blob, src)
-        except FetchError:
+        except FetchError as e:
+            if e.status not in (403, 404):
+                raise
             # Some submissions have no source; fall back to the PDF.
             pdf = _get(f"{ARXIV_BASE}/pdf/{arxiv_id}")
             src.mkdir(parents=True, exist_ok=True)

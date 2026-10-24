@@ -3,7 +3,7 @@
 - Paper: arXiv:2305.18290 (LaTeX source, main file `main.tex`)
 - Title: Direct Preference Optimization:\ Your Language Model is Secretly a Reward Model
 - Code: https://github.com/eric-mitchell/direct-preference-optimization @ `f8b8c0f49dc9`
-- Generated: 2026-10-22T08:14:57Z by paperdiff 0.1.0
+- Generated: 2026-10-24T19:46:39Z by paperdiff 0.1.0
 
 | Category | Count |
 |---|---|

@@ -3,12 +3,12 @@
 - Paper: arXiv:1810.04805 (LaTeX source, main file `main.tex`)
 - Title: BERT: Pre-training of Deep Bidirectional Transformers for \ Language Understanding
 - Code: https://github.com/google-research/bert @ `eedf5716ce12`
-- Generated: 2026-10-22T08:14:57Z by paperdiff 0.1.0
+- Generated: 2026-10-24T19:46:39Z by paperdiff 0.1.0
 
 | Category | Count |
 |---|---|
 | conflict | 7 |
-| ambiguous | 13 |
+| ambiguous | 14 |
 | missing_in_code | 5 |
 | missing_in_paper | 1 |
 | match | 6 |
@@ -83,9 +83,21 @@
   - 20 — command `--num_train_steps` at [README.md:929](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/README.md#L929): `python run_pretraining.py \`
   - 100000 — flag_default `num_train_steps` at [run_pretraining.py:70](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/run_pretraining.py#L70): `flags.DEFINE_integer("num_train_steps", 100000, "Number of training steps.")`
 
-## Ambiguous — several values, or the paper value is overridden (13)
+## Ambiguous — several values, or the paper value is overridden (14)
 
 ### A1. `learning_rate`
+
+- **Paper**: `5e-5` → 5e-05 at `bert_details.tex:67`
+  - Section: Appendix: Additional Details for BERT > Fine-tuning Procedure
+  - Context: "\begin{itemize}[noitemsep] \item {\bf Batch size}: 16, 32 \item {\bf Learning rate (Adam)}: 5e-5, 3e-5, 2e-5 \item {\bf Number of epochs}: 2, 3, 4 \end{itemize}"
+- **Code** (highest precedence first; likely effective: 2e-05):
+  - 2e-05 — command `--learning_rate` at [README.md:440](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/README.md#L440): `python run_classifier.py \`
+  - 5e-05 — flag_default `learning_rate` at [run_classifier.py:84](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/run_classifier.py#L84): `flags.DEFINE_float("learning_rate", 5e-5, "The initial learning rate for Adam.")`
+  - 0.2 — code_literal `learning_rate` at [optimization_test.py:36](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/optimization_test.py#L36): `optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)`
+- Scope: compared only with files matching "files not tied to another section"
+- Note: paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides
+
+### A2. `learning_rate`
 
 - **Paper**: `5e-5` → 5e-05 at `bert_details.tex:90`
   - Section: Appendix: Additional Details for BERT > Comparison of BERT, ELMo ,and OpenAI GPT
@@ -97,7 +109,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides
 
-### A2. `learning_rate`
+### A3. `learning_rate`
 
 - **Paper**: `5e-5` → 5e-05 at `experiment.tex:19`
   - Section: Experiments > GLUE
@@ -109,7 +121,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides
 
-### A3. `learning_rate`
+### A4. `learning_rate`
 
 - **Paper**: `5e-5` → 5e-05 at `experiment.tex:43`
   - Section: Experiments > SQuAD v1.1
@@ -123,7 +135,7 @@
 - Scope: compared only with files matching "SQuAD v1.1"
 - Note: paper value appears only as a flag_default (run_squad.py:91), which a command (precedence 4) likely overrides
 
-### A4. `learning_rate`
+### A5. `learning_rate`
 
 - **Paper**: `5e-5` → 5e-05 at `experiment.tex:57`
   - Section: Experiments > SQuAD v2.0
@@ -137,7 +149,7 @@
 - Scope: compared only with files matching "SQuAD v2.0"
 - Note: paper value appears only as a flag_default (run_squad.py:91), which a command (precedence 4) likely overrides
 
-### A5. `batch_size`
+### A6. `batch_size`
 
 - **Paper**: `16` → 16 at `bert_details.tex:66`
   - Section: Appendix: Additional Details for BERT > Fine-tuning Procedure
@@ -151,7 +163,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used
 
-### A6. `batch_size`
+### A7. `batch_size`
 
 - **Paper**: `32` → 32 at `experiment.tex:19`
   - Section: Experiments > GLUE
@@ -165,7 +177,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: 2 different values at the same precedence (command); one matches, and the tool cannot tell which one this experiment used
 
-### A7. `batch_size`
+### A8. `batch_size`
 
 - **Paper**: `32` → 32 at `experiment.tex:43`
   - Section: Experiments > SQuAD v1.1
@@ -179,7 +191,7 @@
 - Scope: compared only with files matching "SQuAD v1.1"
 - Note: paper value appears only as a flag_default (run_squad.py:86), which a command (precedence 4) likely overrides
 
-### A8. `batch_size`
+### A9. `batch_size`
 
 - **Paper**: `48` → 48 at `experiment.tex:57`
   - Section: Experiments > SQuAD v2.0
@@ -193,7 +205,7 @@
 - Scope: compared only with files matching "SQuAD v2.0"
 - Note: the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used
 
-### A9. `batch_size`
+### A10. `batch_size`
 
 - **Paper**: `16` → 16 at `experiment.tex:69`
   - Section: Experiments > SWAG
@@ -207,7 +219,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used
 
-### A10. `epochs`
+### A11. `epochs`
 
 - **Paper**: `3` → 3 at `experiment.tex:43`
   - Section: Experiments > SQuAD v1.1
@@ -221,7 +233,7 @@
 - Scope: compared only with files matching "SQuAD v1.1"
 - Note: paper value appears only as a flag_default (run_squad.py:93), which a command (precedence 4) likely overrides
 
-### A11. `warmup_steps`
+### A12. `warmup_steps`
 
 - **Paper**: `10,000` → 10000 at `bert_details.tex:55`
   - Section: Appendix: Additional Details for BERT > Pre-training Procedure
@@ -232,7 +244,7 @@
 - Scope: compared only with files matching "Pre-training Procedure"
 - Note: paper value appears only as a flag_default (run_pretraining.py:72), which a command (precedence 4) likely overrides
 
-### A12. `num_layers`
+### A13. `num_layers`
 
 - **Paper**: `four` → 4 at `ablation.tex:33`
   - Section: Ablation Studies > Effect of Model Size
@@ -244,7 +256,7 @@
 - Scope: compared only with files matching "files not tied to another section"
 - Note: the code sets 2 different values at the same precedence and none equals the paper; the tool cannot tell which one this experiment used
 
-### A13. `num_layers`
+### A14. `num_layers`
 
 - **Paper**: `two` → 2 at `ablation.tex:51`
   - Section: Ablation Studies > Feature-based Approach with BERT

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "paperdiff_version": "0.1.0",
-  "generated": "2026-10-22T08:14:57Z",
+  "generated": "2026-10-24T19:46:39Z",
   "paper": {
     "label": "arXiv:1810.04805",
     "title": "BERT: Pre-training of Deep Bidirectional Transformers for \\ Language Understanding",
     "source_kind": "latex",
     "main_file": "main.tex",
-    "claims": 31
+    "claims": 32
   },
   "repo": {
     "path": "/Users/apple/.cache/paperdiff/repos/github.com_google-research_bert",
@@ -17,7 +17,7 @@
   },
   "summary": {
     "conflict": 7,
-    "ambiguous": 13,
+    "ambiguous": 14,
     "missing_in_code": 5,
     "missing_in_paper": 1,
     "match": 6
@@ -297,6 +297,56 @@
         "key": "learning_rate",
         "value": 5e-05,
         "raw": "5e-5",
+        "loc": "bert_details.tex:67",
+        "section": "Appendix: Additional Details for BERT > Fine-tuning Procedure",
+        "context": "\\begin{itemize}[noitemsep] \\item {\\bf Batch size}: 16, 32 \\item {\\bf Learning rate (Adam)}: 5e-5, 3e-5, 2e-5 \\item {\\bf Number of epochs}: 2, 3, 4 \\end{itemize}",
+        "origin": "text",
+        "values": [
+          5e-05,
+          3e-05,
+          2e-05
+        ]
+      },
+      "code": [
+        {
+          "key": "learning_rate",
+          "name": "--learning_rate",
+          "value": 2e-05,
+          "source": "command",
+          "loc": "README.md:440",
+          "text": "python run_classifier.py \\",
+          "target": "run_classifier.py"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 5e-05,
+          "source": "flag_default",
+          "loc": "run_classifier.py:84",
+          "text": "flags.DEFINE_float(\"learning_rate\", 5e-5, \"The initial learning rate for Adam.\")"
+        },
+        {
+          "key": "learning_rate",
+          "name": "learning_rate",
+          "value": 0.2,
+          "source": "code_literal",
+          "loc": "optimization_test.py:36",
+          "text": "optimizer = optimization.AdamWeightDecayOptimizer(learning_rate=0.2)"
+        }
+      ],
+      "effective": [
+        2e-05
+      ],
+      "scope": "files not tied to another section",
+      "note": "paper value appears only as a flag_default (run_classifier.py:84), which a command (precedence 4) likely overrides"
+    },
+    {
+      "category": "ambiguous",
+      "key": "learning_rate",
+      "paper": {
+        "key": "learning_rate",
+        "value": 5e-05,
+        "raw": "5e-5",
         "loc": "bert_details.tex:90",
         "section": "Appendix: Additional Details for BERT > Comparison of BERT, ELMo ,and OpenAI GPT",
         "context": "\\item GPT used the same learning rate of 5e-5 for all fine-tuning experiments;",
@@ -345,7 +395,13 @@
         "loc": "experiment.tex:19",
         "section": "Experiments > GLUE",
         "context": "For each task, we selected the best fine-tuning learning rate (among 5e-5, 4e-5, 3e-5, and 2e-5) on the Dev set.",
-        "origin": "text"
+        "origin": "text",
+        "values": [
+          5e-05,
+          4e-05,
+          3e-05,
+          2e-05
+        ]
       },
       "code": [
         {

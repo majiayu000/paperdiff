@@ -85,3 +85,15 @@ def test_two_settings_in_one_cell():
     assert ("lora_rank", 8.0, "LoRA / MNLI", "t.tex:4") in got and ("lora_rank", 8.0, "LoRA / SST-2", "t.tex:4") in got
     assert ("learning_rate", 0.0001, "LoRA / MNLI", "t.tex:5") in got
     assert ("batch_size", 32.0) in {(c.key, c.value) for c in claims if c.loc == "t.tex:5"}
+
+
+def test_sweeps_and_flattened_pdf_exponents():
+    from paperdiff.paper import Line
+
+    lines = [Line("x.tex", 1, "We test the following values of the learning rate: 0.0001, 0.00025, 0.0005, 0.001."),
+             Line("x.tex", 2, ""),
+             Line("x.pdf", 3, "We use Adam with learning rate = .001 and weight decay = 10−5.", page=1)]
+    claims = extract(lines)
+    lr = next(c for c in claims if c.key == "learning_rate" and c.line == 1)
+    assert lr.values == [0.0001, 0.00025, 0.0005, 0.001]
+    assert [c.value for c in claims if c.key == "weight_decay"] == [1e-05]

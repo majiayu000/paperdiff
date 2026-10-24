@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "paperdiff_version": "0.1.0",
-  "generated": "2026-10-22T08:14:56Z",
+  "generated": "2026-10-24T19:46:38Z",
   "paper": {
     "label": "arXiv:2405.20233",
     "title": "Grokfast: Accelerated Grokking by \\ Amplifying Slow Gradients",

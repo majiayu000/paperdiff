@@ -28,6 +28,7 @@ BETWEEN_REJECT = re.compile(r"\b(?:factor|by|every|per|after|than|times|from|mul
 UNIT_AFTER = re.compile(r"^\s*(?:tokens|words|characters|GB|MB|hours?|days?|minutes?|seconds?|ms)\b", re.I)
 DURATION_AFTER = re.compile(r"^\s*(?:training |gradient |optimization )?(?:steps|iterations|updates|epochs)\b", re.I)
 STEPS_AFTER = re.compile(r"^\s*(?:training |gradient |optimization )?(?:steps|iterations|updates)\b", re.I)
+LIST_AFTER = re.compile(r"(?:\s*,\s*(?:and\s+|or\s+)?[\d.]+(?:[eE]-?\d+)?){2,}")
 RATIO_RE = re.compile(r"(?<![\w.])(\d+(?:\.\d+)?)\s*\\?%?\s*[:/]\s*(\d+(?:\.\d+)?)\s*\\?%?(?![\w.])")
 WORD_NUMBER_KEYS = {"num_layers", "num_heads", "num_gpus", "epochs"}
 COUNT_SKIP_BEFORE = re.compile(r"\b(?:every|each|per|after|last|within|of the)\s*$", re.I)
@@ -295,6 +296,11 @@ def _claims_from_sentence(sent: str, offset: int, joined: _Joined, section: str)
                 continue
             n = nums[0]
             if not _plausible(key, n, window):
+                continue
+            listed = LIST_AFTER.match(window[n.end:])
+            if listed:  # "values of the learning rate: 0.0001, 0.00025, 0.0005": a sweep, not one setting
+                vals = [n.value] + [x.value for x in find_numbers(listed.group(0))]
+                add(key.name, n, m.end() + n.start, values=vals)
                 continue
             between = window[:n.start]
             if len(between) > 60 or BETWEEN_REJECT.search(between) or _other_phrase_in(between, key):

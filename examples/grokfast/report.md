@@ -3,7 +3,7 @@
 - Paper: arXiv:2405.20233 (LaTeX source, main file `main.tex`)
 - Title: Grokfast: Accelerated Grokking by \ Amplifying Slow Gradients
 - Code: https://github.com/ironjr/grokfast @ `93b2248e351d`
-- Generated: 2026-10-22T08:14:56Z by paperdiff 0.1.0
+- Generated: 2026-10-24T19:46:38Z by paperdiff 0.1.0
 
 | Category | Count |
 |---|---|
