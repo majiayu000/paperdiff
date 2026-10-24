@@ -1,0 +1,295 @@
+{
+ "02922e82": {
+  "tier": "method"
+ },
+ "03255952": {
+  "note": "noise levels list",
+  "tier": "other_setting"
+ },
+ "03a374de": {
+  "tier": "method"
+ },
+ "073fb272": {
+  "tier": "method"
+ },
+ "09062f79": {
+  "note": "layer-wise lr decay",
+  "tier": "other_setting"
+ },
+ "0b8b9b43": {
+  "tier": "method"
+ },
+ "106ad0b9": {
+  "tier": "method"
+ },
+ "120335b4": {
+  "tier": "method"
+ },
+ "183bd763": {
+  "tier": "method"
+ },
+ "1dd22bb4": {
+  "tier": "method"
+ },
+ "1ffbe3cb": {
+  "tier": "method"
+ },
+ "22fbb9d2": {
+  "note": "max graph size hyperparameter",
+  "tier": "other_setting"
+ },
+ "25ee1fd2": {
+  "tier": "method"
+ },
+ "29a1eeb5": {
+  "tier": "method"
+ },
+ "2c296ba3": {
+  "tier": "method"
+ },
+ "34ddeb91": {
+  "tier": "method"
+ },
+ "36c92030": {
+  "tier": "method"
+ },
+ "3bdc7c6f": {
+  "note": "number of runs (20 vs 5)",
+  "tier": "other_setting"
+ },
+ "3c206242": {
+  "tier": "method"
+ },
+ "3c7fd06f": {
+  "tier": "method"
+ },
+ "3f098eb0": {
+  "tier": "method"
+ },
+ "417ffbee": {
+  "tier": "method"
+ },
+ "41c16fd1": {
+  "tier": "method"
+ },
+ "47339aed": {
+  "note": "lr schedule (step vs cosine)",
+  "tier": "other_setting"
+ },
+ "4b9f947a": {
+  "note": "pretrained model choice",
+  "tier": "other_setting"
+ },
+ "4ddcad80": {
+  "note": "penalty-weight warm-up schedule",
+  "tier": "other_setting"
+ },
+ "51a0c305": {
+  "tier": "method"
+ },
+ "530cb4ff": {
+  "tier": "method"
+ },
+ "55432721": {
+  "note": "dataset (CIFAR-10 vs CIFAR-100)",
+  "tier": "other_setting"
+ },
+ "567e0837": {
+  "tier": "method"
+ },
+ "5a1bb334": {
+  "tier": "method"
+ },
+ "5a92be86": {
+  "tier": "method"
+ },
+ "5cfb9a3a": {
+  "tier": "method"
+ },
+ "61926641": {
+  "tier": "method"
+ },
+ "63197a77": {
+  "tier": "method"
+ },
+ "644c25cf": {
+  "tier": "method"
+ },
+ "66841ab0": {
+  "key": "hidden_size",
+  "note": "paper: expert FFN widths 400/200/200; code: expert_units list",
+  "tier": "keys"
+ },
+ "6a50c278": {
+  "tier": "method"
+ },
+ "6b3125af": {
+  "tier": "method"
+ },
+ "71f50403": {
+  "tier": "method"
+ },
+ "743a1998": {
+  "tier": "method"
+ },
+ "77ce66a1": {
+  "tier": "method"
+ },
+ "780371f1": {
+  "tier": "method"
+ },
+ "78911e70": {
+  "tier": "method"
+ },
+ "7a9a3f93": {
+  "tier": "method"
+ },
+ "7c8468c8": {
+  "tier": "method"
+ },
+ "7cd4b3d7": {
+  "tier": "method"
+ },
+ "7e9f9955": {
+  "tier": "method"
+ },
+ "80872023": {
+  "tier": "method"
+ },
+ "810540d2": {
+  "tier": "method"
+ },
+ "84acd23b": {
+  "tier": "method"
+ },
+ "866db454": {
+  "tier": "method"
+ },
+ "881beca2": {
+  "tier": "method"
+ },
+ "8e4dfba9": {
+  "tier": "method"
+ },
+ "8fbac23a": {
+  "tier": "method"
+ },
+ "9069a833": {
+  "tier": "method"
+ },
+ "90c14330": {
+  "tier": "method"
+ },
+ "96d7973b": {
+  "note": "patch-size schedule thresholds",
+  "tier": "other_setting"
+ },
+ "9a6bc557": {
+  "tier": "method"
+ },
+ "a17a3073": {
+  "tier": "method"
+ },
+ "a1e977d5": {
+  "tier": "method"
+ },
+ "a6c0db18": {
+  "tier": "method"
+ },
+ "a950db48": {
+  "tier": "method"
+ },
+ "a9deb3ea": {
+  "tier": "method"
+ },
+ "aa357802": {
+  "tier": "method"
+ },
+ "ac9ca85f": {
+  "tier": "method"
+ },
+ "b019c5d8": {
+  "tier": "method"
+ },
+ "b1b5cc6e": {
+  "tier": "method"
+ },
+ "b2baef99": {
+  "tier": "method"
+ },
+ "b55880a0": {
+  "tier": "method"
+ },
+ "b881aa62": {
+  "tier": "method"
+ },
+ "c5dec3b3": {
+  "tier": "method"
+ },
+ "c9a26055": {
+  "tier": "method"
+ },
+ "cb3be166": {
+  "tier": "method"
+ },
+ "cb60217c": {
+  "tier": "method"
+ },
+ "cb60b416": {
+  "tier": "method"
+ },
+ "d1c77c19": {
+  "note": "dilation rates",
+  "tier": "other_setting"
+ },
+ "d586de2b": {
+  "tier": "method"
+ },
+ "dfccf929": {
+  "tier": "method"
+ },
+ "e6dfa9fa": {
+  "tier": "method"
+ },
+ "e85ad122": {
+  "tier": "method"
+ },
+ "ec7b02db": {
+  "tier": "method"
+ },
+ "ecc908bc": {
+  "tier": "method"
+ },
+ "ecdd2970": {
+  "tier": "method"
+ },
+ "ef57fd41": {
+  "tier": "method"
+ },
+ "f234a0ee": {
+  "tier": "method"
+ },
+ "f2b47a1a": {
+  "key": "weight_decay",
+  "note": "code adds optimizer weight decay on backbone; paper omits it",
+  "tier": "keys"
+ },
+ "f3debb36": {
+  "tier": "method"
+ },
+ "f9a805be": {
+  "key": "train_fraction",
+  "note": "paper: candidate/safety split evenly; code: r_cand_v_safe=0.4",
+  "tier": "keys"
+ },
+ "fbdbe39a": {
+  "tier": "method"
+ },
+ "fec5862c": {
+  "tier": "method"
+ },
+ "ffb14e4c": {
+  "note": "number of filters per cascade",
+  "tier": "other_setting"
+ }
+}
