@@ -38,6 +38,11 @@ Documentation = "https://github.com/majiayu000/paperdiff/blob/main/docs/design.m
 [project.scripts]
 paperdiff = "paperdiff.cli:main"
 
+[project.optional-dependencies]
+llm = [
+    "anthropic>=2.3.0",
+]
+
 [dependency-groups]
 dev = ["pytest>=8.0"]
 

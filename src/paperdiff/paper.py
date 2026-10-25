@@ -84,6 +84,7 @@ class Paper:
     main_file: str | None
     text_blob: str  # cleaned full text, used to answer "does the paper mention X at all"
     title: str = ""
+    lines: list[Line] = field(default_factory=list)  # the loaded source lines, for the optional LLM pass
 
 
 # ---------------------------------------------------------------- LaTeX loading
@@ -517,7 +518,7 @@ def load_paper(kind: str, path: Path, label: str) -> Paper:
     blob = " ".join(_clean(ln.text) for ln in lines)
     m = TITLE_RE.search(" ".join(ln.text for ln in lines)) if kind == "latex" else None
     title = _section_title(m.group(1)) if m else ""
-    return Paper(label, kind, claims, main, blob, title)
+    return Paper(label, kind, claims, main, blob, title, lines)
 
 
 def mentions(paper: Paper, key_name: str) -> bool:

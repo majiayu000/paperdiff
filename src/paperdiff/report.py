@@ -42,8 +42,8 @@ def _esc(s: str) -> str:
 
 
 def to_json(paper: Paper, repo: RepoSource, findings: list[Finding], generated: str,
-            excludes: list[str] | None = None) -> dict:
-    return {
+            excludes: list[str] | None = None, llm: dict | None = None) -> dict:
+    out = {
         "schema_version": SCHEMA_VERSION,
         "paperdiff_version": __version__,
         "generated": generated,
@@ -54,10 +54,40 @@ def to_json(paper: Paper, repo: RepoSource, findings: list[Finding], generated: 
         "findings": [f.to_json() for f in findings],
         "disclaimer": DISCLAIMER,
     }
+    if llm is not None:
+        out["llm"] = llm
+    return out
+
+
+LLM_NOTE = (
+    "Found by a language model (`--llm`), not by paperdiff's deterministic comparison. Each item's paper and code "
+    "quotes were checked to exist at the cited lines; whether the difference is real was not. Read both sides."
+)
+
+
+def _llm_markdown(repo: RepoSource, llm: dict) -> list[str]:
+    st = llm["stats"]
+    out = [f"## Method-level differences (LLM, {st['model']}) ({len(llm['findings'])})", "", f"> {LLM_NOTE}", "",
+           f"- Chunks sent: {st['chunks']}, calls: {st['calls']}, cache hits: {st['cache_hits']}, "
+           f"cost: ${st['cost_usd']:.4f}",
+           f"- Proposed {st['proposed']}, kept {st['kept']}, dropped {st['dropped']} (citation check failed)"]
+    if st.get("stopped"):
+        out.append(f"- Stopped early: {st['stopped']}")
+    out.append("")
+    for i, f in enumerate(llm["findings"], 1):
+        code_loc = f["code"]["loc"]
+        file, _, line = code_loc.rpartition(":")
+        link = (f"[{code_loc}]({repo.url}/blob/{repo.commit}/{file}#L{line})"
+                if repo.url and repo.commit and repo.url.startswith("https://github.com/") else f"`{code_loc}`")
+        out += [f"### L{i}. {_esc(f['summary'])}", "",
+                f"- **Paper** `{f['paper']['loc']}`: \"{_esc(f['paper']['quote'])}\"",
+                f"- **Code** {link}: `{_esc(f['code']['quote'])}`",
+                f"- Confidence: {f['confidence']}. {_esc(f['reason'])}", ""]
+    return out
 
 
 def to_markdown(paper: Paper, repo: RepoSource, findings: list[Finding], generated: str,
-                excludes: list[str] | None = None) -> str:
+                excludes: list[str] | None = None, llm: dict | None = None) -> str:
     counts = Counter(f.category for f in findings)
     out = [f"# paperdiff report: {paper.label}", ""]
     out.append(f"- Paper: {paper.label} ({'LaTeX source' if paper.kind == 'latex' else 'PDF'}"
@@ -112,6 +142,8 @@ def to_markdown(paper: Paper, repo: RepoSource, findings: list[Finding], generat
             if f.note:
                 out.append(f"- Note: {f.note}")
             out.append("")
+    if llm is not None:
+        out += _llm_markdown(repo, llm)
     return "\n".join(out).rstrip() + "\n"
 
 
