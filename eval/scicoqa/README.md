@@ -81,3 +81,30 @@ test item.
 All 12 items detected under the "any" rule were checked by hand: in each case the matching finding is about a
 different setting that happens to share a number and a file with the gold description (for example a batch size of
 14 for an item about a loss term). None describes the gold discrepancy.
+
+## `--llm` mode (rules fixed before the first `--llm` run)
+
+**Runs.** The same (paper version, commit) pairs as above, `paperdiff check --llm` defaults: provider Anthropic,
+model `claude-sonnet-5-5`, at most 6 paper sections per paper, 40,000 characters per request, cap $1 per paper.
+Runs that failed to fetch above still count as not detected. Before the full run, 3 papers (the first three pairs
+in sorted order) are run to measure cost; the full run happens only if the extrapolated cost for all pairs is at
+most $20.
+
+**Candidates.** A kept `--llm` finding (one that passed the citation check) is a *candidate* for a gold item if
+its code location is in one of the item's gold files (same suffix rule as above).
+
+**Recall.** An item is *detected* when a person reading its gold description and a candidate judges that the
+candidate describes the same discrepancy: the same code construct (function, loss term, layer, data step) and the
+same direction of mismatch. Judgments are recorded in `llm-recall.json` with a one-line reason. Reported for all 92
+items, the method-level subset (78), the coverable subset (3) and the other-setting subset (11). The share of items
+with at least one candidate is reported as an automatic upper bound.
+
+**Precision.** 30 kept `--llm` findings drawn with `random.Random(20261025).sample` from all kept findings sorted
+by paper URL, then paper location, then code location. Each is judged by reading both cited locations: *real* (the
+paper and the code really differ in the way the finding says) or *false* (they agree, or the finding misreads one
+side, or the two sides are about different things). Recorded in `llm-audit.json`.
+
+**Citation check.** The share of proposed findings dropped because a cited location does not exist or the quote is
+not found there, over all runs.
+
+Judgments are made by the tool's author.
