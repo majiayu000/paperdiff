@@ -26,7 +26,7 @@
     "--weight_decay",
     "2.0"
   ],
-  "cwd": "/Users/apple/.cache/paperdiff/repos/github.com_ironjr_grokfast",
+  "cwd": "~/.cache/paperdiff/repos/github.com_ironjr_grokfast",
   "status": "finished",
   "exit_code": 0,
   "elapsed_s": 789.2,

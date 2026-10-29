@@ -10,7 +10,7 @@
     "claims": 411
   },
   "repo": {
-    "path": "/Users/apple/.cache/paperdiff/repos/github.com_microsoft_LoRA",
+    "path": "~/.cache/paperdiff/repos/github.com_microsoft_LoRA",
     "url": "https://github.com/microsoft/LoRA",
     "commit": "c4593f060e6a368d7bb5af5273b8e42810cdef90",
     "excludes": [

@@ -10,7 +10,7 @@
     "claims": 35
   },
   "repo": {
-    "path": "/Users/apple/.cache/paperdiff/repos/github.com_ironjr_grokfast",
+    "path": "~/.cache/paperdiff/repos/github.com_ironjr_grokfast",
     "url": "https://github.com/ironjr/grokfast",
     "commit": "93b2248e351d4bb9e4dda8ac32a6999b8970404b",
     "excludes": []

@@ -1,6 +1,6 @@
 # paperdiff rerun
 
-- Command: `uv run --no-project --python 3.12 --with torch --with torchvision --with matplotlib --with tqdm python main_mnist.py --label test --alpha 0.8 --lamb 0.1 --weight_decay 2.0` (in `/Users/apple/.cache/paperdiff/repos/github.com_ironjr_grokfast`)
+- Command: `uv run --no-project --python 3.12 --with torch --with torchvision --with matplotlib --with tqdm python main_mnist.py --label test --alpha 0.8 --lamb 0.1 --weight_decay 2.0` (in `~/.cache/paperdiff/repos/github.com_ironjr_grokfast`)
 - Budget: 1500 s, 0 GPU(s)
 - Status: finished (exit code 0), 690.7 s
 

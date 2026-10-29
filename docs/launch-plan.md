@@ -16,7 +16,7 @@
 ## 2. 发布步骤（用户已批准公开；自动执行被权限策略拦下，需用户本人运行或放行）
 
 ```bash
-cd /Users/apple/Desktop/code/AI/tool/paperdiff
+cd paperdiff
 gh repo create majiayu000/paperdiff --public --source . --push \
   --description "Paper vs code consistency checker for ML reproducibility: compare hyperparameters, data splits and seeds in an arXiv paper with its GitHub code, line by line."
 gh repo edit majiayu000/paperdiff --homepage https://majiayu000.github.io/paperdiff/ \

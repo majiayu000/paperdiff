@@ -10,7 +10,7 @@
     "claims": 6
   },
   "repo": {
-    "path": "/Users/apple/.cache/paperdiff/repos/github.com_eric-mitchell_direct-preference-optimization",
+    "path": "~/.cache/paperdiff/repos/github.com_eric-mitchell_direct-preference-optimization",
     "url": "https://github.com/eric-mitchell/direct-preference-optimization",
     "commit": "f8b8c0f49dc92a430bae41585f9d467d3618fe2f",
     "excludes": []
