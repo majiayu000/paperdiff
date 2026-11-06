@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>paperdiff — paper vs code consistency checker for ML research</title>
-<meta name="description" content="paperdiff compares the hyperparameters, data splits, seeds and training length stated in an arXiv paper with the configs, argparse defaults and README commands in its GitHub code, and lists every difference with file:line on both sides.">
+<meta name="description" content="Compare an arXiv paper with its code: check hyperparameters, data splits and seeds, with source locations for differences and ambiguous claims.">
 <meta name="keywords" content="reproducibility, paper vs code, hyperparameters, arXiv, ML research, peer review, replication, LaTeX">
 <link rel="canonical" href="https://majiayu000.github.io/paperdiff/">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <meta name="twitter:description" content="Compare hyperparameters, splits and seeds in an arXiv paper with its GitHub code, line by line.">
 <meta name="twitter:image" content="https://majiayu000.github.io/paperdiff/social-preview.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"paperdiff","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","license":"https://opensource.org/licenses/MIT","url":"https://majiayu000.github.io/paperdiff/","codeRepository":"https://github.com/majiayu000/paperdiff","description":"Paper vs code consistency checker for ML reproducibility.","offers":{"@type":"Offer","price":"0"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"paperdiff","applicationCategory":"DeveloperApplication","operatingSystem":"macOS, Linux, Windows","license":"https://opensource.org/licenses/MIT","url":"https://majiayu000.github.io/paperdiff/","codeRepository":"https://github.com/majiayu000/paperdiff","description":"Paper vs code consistency checker for ML reproducibility.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <style>
 :root { --bg:#ffffff; --fg:#0f172a; --muted:#475569; --card:#f1f5f9; --line:#cbd5e1; --accent:#2563eb; --del:#b91c1c; --add:#15803d; --warn:#b45309; }
@@ -45,7 +45,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: .9rem; }
 <body>
 <main>
 <h1>paperdiff</h1>
-<p class="lead">A paper vs code consistency checker for ML research. Give it an arXiv paper and its repository; it lists every place where the hyperparameters, data split, random seeds and training length in the paper differ from the code's configs, argparse defaults and README commands, with <code>file:line</code> on both sides.</p>
+<p class="lead">A paper vs code consistency checker for ML research. Give it an arXiv paper and its repository; it reports extracted claims where the hyperparameters, data split, random seeds and training length in the paper differ from the code's configs, argparse defaults and README commands, with <code>file:line</code> on both sides.</p>
 <p><a class="btn" href="https://github.com/majiayu000/paperdiff">GitHub</a><a href="https://github.com/majiayu000/paperdiff/tree/main/examples">Example reports</a></p>
 
 <p class="note"><strong>paperdiff only reports differences.</strong> It does not judge whether a paper is correct and never draws conclusions about authors. A difference can be a typo, a later code change, a documented choice, or an extraction error by the tool.</p>
@@ -53,6 +53,9 @@ footer { margin-top: 48px; color: var(--muted); font-size: .9rem; }
 <h2>Try it</h2>
 <pre><code>uv tool install git+https://github.com/majiayu000/paperdiff
 paperdiff check 2305.18290 https://github.com/eric-mitchell/direct-preference-optimization -o out/</code></pre>
+
+<p>No model API key is required for the default extraction workflow. Optional model-assisted checks are separate. Review ambiguous or missing claims manually; extraction is not exhaustive.</p>
+<p><a href="https://github.com/majiayu000/paperdiff/issues">Report an extraction problem</a> with the paper ID, code revision and relevant report lines.</p>
 
 <h2>What a finding looks like</h2>
 <pre class="diff"><code><span class="h">lora_alpha   CONFLICT</span>
